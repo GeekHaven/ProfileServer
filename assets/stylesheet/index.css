@@ -1,0 +1,8 @@
+.container #loginDiv{
+	background-image: url("assets/images/1.jpg");
+}
+
+#loginTitle{
+	font-size: 30px;
+	font-family: Impact;
+}
