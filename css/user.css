@@ -84,7 +84,7 @@
 }
 
 .user-profile #cover-links{
-  background: url('zigzag.png');
+  background: url('../images/zigzag.png');
   height: 50px;
   position: absolute;
   bottom: -50px;
