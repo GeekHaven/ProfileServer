@@ -5,19 +5,19 @@
 	<!-- Stylesheets -->
 	<!--Import materialize.css-->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-	<link type="text/css" rel="stylesheet" href="assets/stylesheet/materialize.min.css"  media="screen,projection"/>
-	<link rel="stylesheet" type="text/css" href="assets/stylesheet/login.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	<link rel="stylesheet" type="text/css" href="css/temp_login.css">
 
 	<!-- JavaScripts -->
-    <script type="text/javascript" src="assets/javascript/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/materialize.min.js"></script>
-	  <script type="text/javascript" src="assets/javascript/login.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+	  <script type="text/javascript" src="js/ldap_login.js"></script>
 
 	<!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    
+
+
 
 </head>
 <body>
