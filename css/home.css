@@ -1,0 +1,94 @@
+nav{
+  position: fixed;
+  z-index: 100;
+}
+
+
+#header-logo img{
+  width: 50px;
+  margin: 3px;
+}
+
+#fixed-feed{
+  position: fixed;
+  z-index: 20;
+  height: 100vh;
+  width: 20vw;
+  margin-top: 62px;
+  padding: 10px 5px;
+  background-color: #e9ebee ;
+}
+
+#feed-container{
+  float: right;
+  background-color: #e9ebee;
+  width: 80vw;
+  height: 1200px;
+  overflow: auto;
+  margin-top:  62px;
+}
+
+#feed-container .feed-post{
+  margin: 20px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid lightblue;
+}
+#feed-container .feed-post .feed-from{
+  margin: 10px;
+}
+
+#feed-container .feed-post .setting-button{
+  position: absolute;
+  margin: 20px;
+  right: 20px;
+/*top: 0px;*/
+  color: deepskyblue;
+}
+
+#feed-container .feed-post .feed-from img{
+  width: 45px;
+  margin: 0px 10px;
+  display: inline-block;
+}
+
+#feed-container .feed-post .feed-from .feed-from-about{
+  display: inline-block;
+  padding: 0px;
+  line-height: 10px;
+}
+
+#feed-container .feed-post .feed-from .feed-tags{
+  margin: 5px;
+}
+
+#feed-container .feed-post .feed-from .feed-tags .chip{
+  height: 25px !important;
+  font-size: 12px !important;
+  line-height: 25px !important;
+}
+
+#feed-container .feed-post .feed-text{
+  margin: 0px 10px 10px 10px;
+}
+
+#feed-container .feed-image{
+  margin: 10px;
+}
+
+#feed-container .feed-image img{
+  width: 100%;
+  height: auto;
+}
+
+
+@media screen and (max-width: 750px) {
+  #fixed-feed{
+    position: relative;
+    width:100%;
+    /*height:500px;*/
+  }
+  #feed-container{
+    width: 100vw;
+  }
+}
