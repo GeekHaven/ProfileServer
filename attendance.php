@@ -25,7 +25,7 @@ $grad_year = $field_array['grad_year'];
   <script type="text/javascript" src="js/materialize.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/temp_login.css">
 
 </head>
 <body>

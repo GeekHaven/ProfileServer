@@ -39,7 +39,7 @@ if(isset($_POST['btn-login']))
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>profileserver</title>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/temp_login.css" type="text/css" />
 </head>
 <body>
 
