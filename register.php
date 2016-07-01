@@ -57,7 +57,7 @@ if(isset($_POST['btn-signup']))
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Register</title>
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/temp_login.css" type="text/css" />
 </head>
 <body>
 <center>
