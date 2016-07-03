@@ -1,12 +1,17 @@
 <?php
-error_reporting( E_ALL & ~E_DEPRECATED & ~E_NOTICE );
-if(!mysql_connect("localhost","root",""))
-{
-	die('oops connection problem ! --> '.mysql_error());
-}
-if(!mysql_select_db("practice"))
-{
-	die('oops database selection problem ! --> '.mysql_error());
-}
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "practice";
 
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: ";
+    }
 ?>
