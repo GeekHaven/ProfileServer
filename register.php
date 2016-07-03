@@ -5,21 +5,13 @@ include_once 'php_includes/dbconnect.php';
 
 if(isset($_POST['btn-signup']))
 {
-	$uname = mysql_real_escape_string($_POST['uname']);
-	$email = mysql_real_escape_string($_POST['email']);
-	$pass = mysql_real_escape_string($_POST['pass']);
-	$fname = mysql_real_escape_string($_POST['first_name']);
-	$lname = mysql_real_escape_string($_POST['last_name']);
-	$mname = mysql_real_escape_string($_POST['middle_name']);
-
-
-
-	$uname = trim($uname);
-	$email = trim($email);
-	$pass = trim($pass);
-	$fname = trim($fname);
-	$lname = trim($lname);
-	$mname = trim($mname);
+	$uname = trim($_POST['uname']);
+	$email = trim($_POST['email']);
+	$pass = trim($_POST['pass']);
+	$fname = trim($_POST['first_name']);
+	$lname = trim($_POST['last_name']);
+	$mname = trim($_POST['middle_name']);
+	
 	$pass = password_hash($pass, PASSWORD_DEFAULT);
 
 	// email exists or not

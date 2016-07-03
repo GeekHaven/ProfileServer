@@ -6,11 +6,8 @@ include 'php_includes/logged_in_redirect.php';
 
 if(isset($_POST['btn-login']))
 {
-	$email = mysql_real_escape_string($_POST['email']);
-	$pass = mysql_real_escape_string($_POST['pass']);
-	
-	$email = trim($email);
-	$pass = trim($pass);
+	$email = trim($_POST['email']);
+	$pass = trim($_POST['pass']);
 
 	$q1="SELECT uid,pass FROM profileserver WHERE email = ?";
 	$q1_result = $conn->prepare($q1);
