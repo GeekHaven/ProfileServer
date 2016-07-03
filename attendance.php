@@ -2,8 +2,13 @@
 session_start();
 include 'php_includes/dbconnect.php';
 include 'php_includes/login_auth.php'; 
-$q = mysql_query("SELECT * FROM profileserver WHERE uid = ".$_SESSION['user']);
-$field_array = mysql_fetch_array($q);
+
+$uid = $_SESSION['user'];
+$q = "SELECT * FROM profileserver WHERE uid = :uid";
+$q_result = $conn->prepare($q);
+$q_result->bindParam(':uid',$uid);
+$q_result->execute();
+$field_array = $q_result->fetch(PDO::FETCH_ASSOC);
 $fname = $field_array['fname'];
 $mname = $field_array['mname'];
 $lname = $field_array['lname'];
@@ -60,56 +65,46 @@ $grad_year = $field_array['grad_year'];
 	<div class="container">
 		<div class="row">
 			<div class="col s12 m9 l10">
-				
-            
             <table class="highlight">
               <thead>
                 <tr>
                     <th data-field="id">Roll No.</th>
                     <th data-field="name">Name</th>
-                    <th data-field="present">Status</th>
-                    
+                    <th data-field="present">Status</th>            
                 </tr>
               </thead>
 
               <tbody>
 
                 	    <?php
-	   
-
-		$sql = "SELECT uid,fname,mname,lname FROM profileserver;";
-
-		$result = mysql_query($sql);
-		while($row = mysql_fetch_array($result))
-		 {
-		  echo "<tr>";
-		  echo "<td>".$row['uid']."</td>";
-		  echo "<td>".$row['fname']." ".$row['mname']." ".$row['lname']." "."</font></td>";
-		  echo "<td><div class='switch'>
-						    <label >
-						      <span id='".$row['uid']."A'>Absent</span>
-						      <input type='checkbox' id ='".$row['uid']."C' checked onclick='color(".$row['uid'].")'>
-						      <span class='lever green' id ='".$row['uid']."S'></span>
-						      <span id='".$row['uid']."P' style='color:green'>Present</span>
-						    </label>
-						</div></td>";
-		  echo "</tr>";
+							$sql = "SELECT uid,fname,mname,lname FROM profileserver;";
+							$sql_result = $conn->prepare($sql);
+							$sql_result->execute();
+							while($row = $sql_result->fetch())
+							 {
+							  echo "<tr>";
+							  echo "<td>".$row['uid']."</td>";
+							  echo "<td>".$row['fname']." ".$row['mname']." ".$row['lname']." "."</font></td>";
+							  echo "<td><div class='switch'>
+										    <label >
+										      <span id='".$row['uid']."A'>Absent</span>
+										      <input type='checkbox' id ='".$row['uid']."C' checked onclick='color(".$row['uid'].")'>
+										      <span class='lever green' id ='".$row['uid']."S'></span>
+										      <span id='".$row['uid']."P' style='color:green'>Present</span>
+										    </label>
+										</div></td>";
+							  echo "</tr>";
 		  
 		 }
 	    //select * from profileserver
-
-
 	    ?>
 
               </tbody>
-
-            </table>
-          
-				
+            </table>			
 			</div>
-			
 		</div>
 	</div>
+
 		<script >
 	    
 	    	function loadDoc(batchid) 
