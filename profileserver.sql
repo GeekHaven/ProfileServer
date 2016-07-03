@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 29, 2016 at 07:07 PM
+-- Generation Time: Jul 03, 2016 at 12:10 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -44,9 +44,8 @@ CREATE TABLE `profileserver` (
 --
 
 INSERT INTO `profileserver` (`uid`, `uname`, `pass`, `email`, `fname`, `mname`, `lname`, `dob`, `course`, `grad_year`) VALUES
-(1, 'johndoe', '3b6beb51e76816e632a40d440eab0097', 'johndoe@gmail.com', 'John', 'E', 'Doe', '2016-06-01', 'B.tech', 2021),
-(2, 'shubham-padia', '3b6beb51e76816e632a40d440eab0097', 'shubhamapadia@gmail.com', 'Shubham', 'A', 'Padia', '1998-02-27', 'B.tech', 2020),
-(3, 'janedoe', '3b6beb51e76816e632a40d440eab0097', 'janedoe@gmail.com', 'Jane', 'Janardan', 'Doe', '2016-06-29', '', 0);
+(1, 'johndoe', '$2y$10$k/fqqmEW8DYvldyt/QwMVOaAlbcbrc24A6BTFU9Lx/ArtZYWfVQkC', 'johndoe@gmail.com', 'John', 'A', 'Doe', '2016-07-03', 'M.tech', 2020),
+(2, 'janedoe', '$2y$10$3g.e4hHzELhd2RXt40VoAONLwropwfKhmlIxgXyQR0iLtaHJAzolS', 'janedoe@gmail.com', 'Jane', 'A', 'Doe', '2016-07-03', 'M.tech', 2020);
 
 --
 -- Indexes for dumped tables
@@ -66,7 +65,7 @@ ALTER TABLE `profileserver`
 -- AUTO_INCREMENT for table `profileserver`
 --
 ALTER TABLE `profileserver`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
