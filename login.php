@@ -50,7 +50,7 @@ if(isset($_POST['btn-login']))
   <nav>
       <div class="nav-wrapper  cyan darken-4"  id="nav-wrapper">
         <a href="#" class="brand-logo" id="header-logo">
-          <img src="images/effe.png">
+          <img src="images/logo.jpg">
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down black-text">
           <li class="active"><a href="#" id="header-user" style="color:white; font-size:20px; font-family:Comic Sans MS;"><b>>Minion</a></li>
