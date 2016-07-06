@@ -2,8 +2,13 @@
 session_start();
 include 'php_includes/dbconnect.php';
 include 'php_includes/login_auth.php'; 
-$q = mysql_query("SELECT * FROM profileserver WHERE uid = ".$_SESSION['user']);
-$field_array = mysql_fetch_array($q);
+
+$uid = $_SESSION['user'];
+$q = "SELECT * FROM profileserver WHERE uid = :uid";
+$q_result = $conn->prepare($q);
+$q_result->bindParam(':uid',$uid);
+$q_result->execute();
+$field_array = $q_result->fetch(PDO::FETCH_ASSOC);
 $fname = $field_array['fname'];
 $mname = $field_array['mname'];
 $lname = $field_array['lname'];

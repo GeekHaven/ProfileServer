@@ -5,48 +5,63 @@ include_once 'php_includes/dbconnect.php';
 
 if(isset($_POST['btn-signup']))
 {
-	$uname = mysql_real_escape_string($_POST['uname']);
-	$email = mysql_real_escape_string($_POST['email']);
-	$pass = md5(mysql_real_escape_string($_POST['pass']));
-	$fname = mysql_real_escape_string($_POST['first_name']);
-	$lname = mysql_real_escape_string($_POST['last_name']);
-	$mname = mysql_real_escape_string($_POST['middle_name']);
-
-
-
-	$uname = trim($uname);
-	$email = trim($email);
-	$pass = trim($pass);
-	$fname = trim($fname);
-	$lname = trim($lname);
-	$mname = trim($mname);
-
-
-	// email exist or not
-	$query = "SELECT email FROM profileserver WHERE email='$email'";
-	$result = mysql_query($query);
+	$uname = trim($_POST['uname']);
+	$email = trim($_POST['email']);
+	$pass = trim($_POST['pass']);
+	$fname = trim($_POST['first_name']);
+	$lname = trim($_POST['last_name']);
+	$mname = trim($_POST['middle_name']);
 	
-	$count = mysql_num_rows($result); // if email not found then register
-	
-	if($count == 0){
-		
-		if(mysql_query("INSERT INTO profileserver(uname,email,pass,fname,mname,lname) VALUES('$uname','$email','$pass','$fname','$mname','$lname')"))
+	$pass = password_hash($pass, PASSWORD_DEFAULT);
+
+	// email exists or not
+	$query_email = "SELECT email FROM profileserver WHERE email= ?";
+	$result_email = $conn->prepare($query_email);
+	$result_email->execute([$email]);
+	$count_email = $result_email->rowCount(); 
+
+	// uname exists or not
+	$query_uname = "SELECT email FROM profileserver WHERE uname= ?";
+	$result_uname = $conn->prepare($query_uname);
+	$result_uname->execute([$uname]);
+	$count_uname = $result_uname->rowCount(); 
+
+
+	if($count_email == 0 && $count_uname == 0){
+
+		$reg = "INSERT INTO profileserver(uname,email,pass,fname,mname,lname) VALUES(:uname, :email, :pass, :fname, :mname, :lname)";
+		$reg_result = $conn->prepare($reg);
+		$reg_result->bindParam(':uname',$uname);
+		$reg_result->bindParam(':email',$email);
+		$reg_result->bindParam(':pass',$pass);
+		$reg_result->bindParam(':fname',$fname);
+		$reg_result->bindParam(':mname',$mname);
+		$reg_result->bindParam(':lname',$lname);
+
+		if($reg_result->execute())
 		{
 			?>
 			<script>alert('successfully registered ');</script>
 			<?php
 				header("Location: login.php");
 		}
-		else
-		{
+		else{
 			?>
 			<script>alert('error while registering you...');</script>
 			<?php
-		}		
-	}
-	else{
+		}	
+
+	}else if($count_email == 0 && $count_uname != 0){
 			?>
-			<script>alert('Sorry Email ID already taken ...');</script>
+			<script>alert('Sorry Username already taken ...');</script>
+			<?php
+	}else if($count_email != 0 && $count_uname == 0){
+			?>
+			<script>alert('Sorry Email Id already taken ...');</script>
+			<?php
+	}else if($count_email != 0 && $count_uname != 0){
+			?>
+			<script>alert('Sorry Username and Email Id both arealready taken ...');</script>
 			<?php
 	}
 	

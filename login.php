@@ -6,31 +6,23 @@ include 'php_includes/logged_in_redirect.php';
 
 if(isset($_POST['btn-login']))
 {
-	$email = mysql_real_escape_string($_POST['email']);
-	$pass = mysql_real_escape_string($_POST['pass']);
-	
-	$email = trim($email);
-	$pass = trim($pass);
+	$email = trim($_POST['email']);
+	$pass = trim($_POST['pass']);
 
-	
-	$res=mysql_query("SELECT uid, uname, pass FROM profileserver WHERE email='$email'");
-	$row=mysql_fetch_array($res);
-	
-	$count = mysql_num_rows($res); // if uname/pass correct it must return row
-	
-	if($count == 1 && $row['pass']==md5($pass))
-	{
-		$_SESSION['user'] = $row['uid'];
-		header("Location: form.php");
-	}
-	else
-	{
-		?>
-        <script>alert('Username / Password Seems Wrong !');</script>
-        <?php
-	}
-	
-}
+	$q1="SELECT uid,pass FROM profileserver WHERE email = ?";
+	$q1_result = $conn->prepare($q1);
+	$q1_result->execute([$email]);
+	$row = $q1_result->fetch(PDO::FETCH_ASSOC);
+
+		if(count($row) > 0 && password_verify($pass,$row['pass'])){
+			$_SESSION['user'] = $row['uid'];
+			header("Location: form.php");
+		}else{
+			?>
+    			<script>alert('Username / Password Seems Wrong !');</script>
+    		<?php
+		}
+}		
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
