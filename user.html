@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title id="title">Minion</title>
+	<title id="title">User Profile Server</title>
 	<meta name="author" content="Geekhaven" />
 	<link href="css/user.css" rel="stylesheet" type="text/css">
     	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -9,20 +9,20 @@
 </head>
 
 <body>
-  <nav>
-    <div id="nav-wrapper">
-      <a href="#" class="brand-logo" id="header-logo">
-        <img src="images/effe.png">
-      </a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-      	<!-- <img src="minion.jpg" id="profile-picture-small"> -->
-        <li class="active"><a href="#" id="header-user">Minion</a></li>
-        <li><a href="#" id="header-login">Login</a></li>
-        <li><a href="#" id="header-signup">Sign Up</a></li>
-        <li><a href="#" id="header-settings"><i class="material-icons setting-button">settings</i></a></li>
-      </ul>
-    </div>
-  </nav>
+	  <nav>
+	    <div id="nav-wrapper">
+	      <a href="#" class="brand-logo" id="header-logo">
+	        <img src="images/effe.png">
+	      </a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	      	<!-- <img src="minion.jpg" id="profile-picture-small"> -->
+	        <li class="active"><a href="#" id="header-user">Minion</a></li>
+	        <li><a href="#" id="header-login">Login</a></li>
+	        <li><a href="#" id="header-signup">Sign Up</a></li>
+	        <li><a href="#" id="header-settings"><i class="material-icons setting-button">settings</i></a></li>
+	      </ul>
+	    </div>
+	  </nav>
 
    <div class="user-profile">
      <div id="cover-profile">
@@ -40,20 +40,66 @@
         <a class="waves-effect waves-light btn-large cover-link" id="coverlink-4"><b>Option</b></a>
       </div>
       <br><br>
-      <div>
-	<h3 id="user-name">Lorem ipsum</h3>
-      </div>
+
+
 
 
 	<div id="user-about-stuff">
-		<center>
-		 <h6 id="user-about">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h6>
-		 <hr width="80%">
-		 <div id="user-badges">
+		<div>
+			<div id="about-info1">
+				<table>
+					<tr title="mail address">
+						<td><p class="detail">kasp@gmail.com </p></td>
+						<td ><i class="material-icons">mail_outline</i> </td>
+						<td class="filler"></td>
+					</tr>
+					<tr title="Phone number">
+						<td><p class="detail">9012345678 </p></td>
+						<td><i class="material-icons">contact_phone</i> </td>
+						<td class="filler"></td>
+					</tr>
+					<tr title="Date Of birth">
+						<td><p class="detail">6<sup>th</sup> July 2016</p></td>
+						<td ><i class="material-icons">today</i> </td>
+						<td class="filler"></td>
+					</tr>
+				</table>
+			</div>
+			<h3 id="user-name">Lorem ipsum</h3>
+			<h5 id="user-id">IIT2015000</h5>
+			<center>
+			 <p id="about-me"><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit.consectetur adipiscing elit.consectetur adipiscing elit.</i></p>
+			 <hr width="90%">
+			</center>
+		</div>
+
+		<br>
+		<div id="user-info2">
+			<div class="icon-container tooltipped" data-position="right" data-delay="50" data-tooltip="Education">
+				<i class="material-icons icons">school</i>
+			</div>
+			<hr>
+			<div class="icon-container tooltipped" data-position="right" data-delay="50" data-tooltip="Skills">
+				<i class="material-icons icons">business_center</i>
+			</div>
+			<hr>
+			<div class="icon-container tooltipped" data-position="right" data-delay="50" data-tooltip="Projects">
+				<i class="material-icons icons">laptop_mac</i>
+			</div>
+			<hr>
+			<div class="icon-container tooltipped" data-position="right" data-delay="50" data-tooltip="Resume">
+				<i class="material-icons icons">insert_drive_file</i>
+			</div>
+		</div>
+		<div id="user-info3">
+
+		</div>
+
+		 <!-- <div id="user-badges">
 		    <h5>Batches</h5>
-		    <i class="material-icons">blur_circular</i>&nbsp;
-		    <i class="material-icons">star_border</i>&nbsp;
-	       	    <i class="material-icons">whatshot</i>&nbsp;
+		    <i class="material-icons">blur_circular</i>
+		    <i class="material-icons">star_border</i>
+	      <i class="material-icons">whatshot</i>
 		    <i class="material-icons">school</i>
 		 </div>
 		 <div id="user-skills">
@@ -77,11 +123,31 @@
 			</center>
 		 </div>
 			<br><br>
+			<div id="project-description" class="optional-visible">
+					<fieldset>
+						<legend>Project Description</legend>
+						<ul class="collapsible" data-collapsible="accordion">
+							<li>
+								<div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+								<div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+							</li>
+							<li>
+								<div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+								<div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+							</li>
+							<li>
+								<div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+								<div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+							</li>
+						</ul>
+					</fieldset>
+			</div> -->
+    </div>
 
-        </div>
-    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	</div>
+    <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
     <script src="js/materialize.min.js"></script>
-    <script src="main.js"></script>
+    <script src="js/user.js"></script>
 
 </body>
 </html>

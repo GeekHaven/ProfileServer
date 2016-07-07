@@ -1,3 +1,11 @@
+nav{
+  background-color: darkturquoise !important;
+}
+
+body{
+  background-color: lightcyan;
+}
+
 .btn-large{
   width: 25%;
   padding: 0px;
@@ -57,6 +65,8 @@
   top: 50%;
   width: 100%;
   height: auto;
+  border-radius: 10px;
+  border: 1px solid lightblue;
 }
 
 .user-profile #cover-profile #profile-picture{
@@ -105,16 +115,26 @@
   border-bottom: 3px solid white;
 }
 
-.user-profile #user-name{
-  padding-left: 200px;
-  padding-right: 100px;
+.user-profile #user-name, .user-profile #user-id{
+  padding-left: 150px;
+  padding-right: 0px;
   display: inline-block;
-  width: 100%;
+  width: 75%;
   padding-bottom: 10px;
   font-weight: 300;
-  /*border-bottom: 1px solid grey;*/
+/*border-bottom: 1px solid grey;*/
 }
 
+#user-about-stuff #user-name{
+  margin-bottom: 0px;
+  margin-top: 30px;
+}
+
+#user-about-stuff #user-id{
+  margin-top: 0px;
+  margin-bottom:
+}
+/*
 .user-profile #user-about-stuff #user-badges{
   width: 40%;
   display: inline-block;
@@ -124,4 +144,75 @@
 .user-profile #user-about-stuff #user-skills{
   width: 40%;
   display: inline-block;
+}*/
+
+.user-profile #user-about-stuff #about-info1{
+    /*width: 55%;*/
+    float: right;
+    margin: 20px;
+    text-align: right;
+}
+.user-profile #user-about-stuff #about-info1 table td{
+  padding: 5px 5px;
+  text-align: right;
+  margin: 20px;
+  border-radius: 0px;
+}
+
+.user-profile #user-about-stuff #about-info1 table .filler{
+  background-color: darkturquoise;
+}
+
+.user-profile #user-about-stuff #about-me{
+  font-size: 19px;
+  font-family: serif;
+  font-weight: lighter;
+}
+
+.user-profile #user-about-stuff #user-info2{
+  width: 100px;
+  height: 408px;
+  margin: 30px;
+  /*padding: 10px 20px;*/
+  display: inline-block;
+  background-color: darkturquoise;
+  /*border: 1px solid lightblue;*/
+  /*border-radius: 5px;*/
+  /*border-right: 1px solid grey;*/
+}
+
+.user-profile #user-about-stuff #user-info2 .icon-container{
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  border-radius: 50%;
+  margin: 15px;
+  background-color: white;
+  transition: background-color .3s;
+}
+
+.user-profile #user-about-stuff #user-info2 .icon-container:hover{
+  background-color: darkturquoise;
+}
+
+.user-profile #user-about-stuff #user-info2 .icon-container:hover i{
+  color: white;
+}
+
+.user-profile #user-about-stuff #user-info2 .icons{
+  font-size: 50px;
+  color: darkturquoise;
+  transition: color .3s;
+}
+
+.user-profile #user-about-stuff #user-info3{
+
+  width: 80%;
+  /*right: 20px;*/
+  margin: 20px 30px;
+  height: 328px;
+  background-color: white;
+  border: 1px solid lightblue;
+  display: inline-block;
+  overflow-y: auto;
 }
