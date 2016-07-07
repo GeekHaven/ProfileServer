@@ -24,8 +24,7 @@ if(isset($_POST['btn-login']))
 		}
 }		
 ?>
- 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -48,15 +47,15 @@ if(isset($_POST['btn-login']))
 <body>
 
   <nav>
-      <div class="nav-wrapper  cyan darken-4"  id="nav-wrapper">
+      <div class="nav-wrapper   teal lighten-1"  id="na lighten-1v-wrapper">
         <a href="#" class="brand-logo" id="header-logo">
           <img src="images/logo.jpg">
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down black-text">
-          <li class="active"><a href="#" id="header-user" style="color:white; font-size:20px; font-family:Comic Sans MS;"><b>>Minion</a></li>
-          <li><a href="#" id="header-login" style="color:white; font-size:20px; font-family:Comic Sans MS;"><b>>Login</b></a></li>
-          <li><a href="#" id="header-signup" style="color:white; font-size:20px; font-family:Comic Sans MS;"><b>>Sign Up</a></li>
-          <li><a href="#" id="header-settings" style="color:white; font-size:20px; font-family:Comic Sans MS;"><b>>Something</a></li>
+          <li><a href="#" id="header-user" style="color:white; font-size:20px; font-family:Robota;"><b>Minion</a></li>
+          <li><a href="#" id="header-login" style="color:white; font-size:20px; font-family:Robota;"><b>Login</b></a></li>
+          <li><a href="#" id="header-signup" style="color:white; font-size:20px; font-family:Robota;"><b>Sign Up</a></li>
+          <li><a href="#" id="header-settings" style="color:white; font-size:20px; font-family:Robota;"><b>Something</a></li>
         </ul>
       </div>
   </nav>
@@ -67,13 +66,28 @@ if(isset($_POST['btn-login']))
         <div id="login-form" class="center">
           <form method="post" >
             <center>
-            <table class="center" style="border-bottom:solid #006064 70px;  width:80%; height=30%; backgroung:#b0bec5; border-collapse:separate; border-spacing: 5px;">
-              <tr bgcolor="#9e9e9e">
-                <td><i class="material-icons prefix">perm_identity</i><input type="text" name="email" placeholder="Your Email" required /></td>
+            <table class="center" style="  width:80%; height=30%; backgroung:white; border-collapse:separate; border-spacing: 5px;  border-radius:6px;">
+              <tr bgcolor="#e0e0e0">
+                <td>
+                <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input class="validate id="icon_prefix"  type="text" name="email" required ">
+          <label for="icon_prefix">Your email</label>
+        </div>
+      </td>
               </tr>
-              <tr bgcolor="#9e9e9e">
-                <td><i class="material-icons prefix">mode_edit</i><input type="password" name="pass" placeholder="Your Password" required /></td>
-              </tr bgcolor="#9e9e9e">
+              <tr bgcolor="#e0e0e0">
+                <td>
+               <div class="row">
+        <div class="input-field col s12 " >
+          <i class="material-icons prefix">mode_edit</i>
+          <input class="validate id="icon_prefix"  type="password" name="pass" required ">
+          <label for="icon_prefix">Your Password</label>
+        </div>
+      </td>
+              </tr>
+
               <div class="container" style="backgroung:#006064">
               <tr>
                 <td><button type="submit" name="btn-login">Sign In</button></td>
@@ -83,7 +97,7 @@ if(isset($_POST['btn-login']))
               </tr>
               </div>
             </table>
-          </center>
+          </center>                                                                                                                
           </form>
         </div>
       </div>
@@ -92,4 +106,5 @@ if(isset($_POST['btn-login']))
   </div>
 </body>
 </html>
+
 
