@@ -1,10 +1,11 @@
+
 @charset "utf-8";
 /* CSS Document */
 
 *
 {
-	margin:0;
-	padding:0;
+  margin:0;
+  padding:0;
 }
 
     header, main, footer {
@@ -17,108 +18,130 @@
       }
     }
 body{
-	background-color: ##FAFAFA;
+  background-color: white;
 }
 
 #login-form
 {
-	margin-top:70px;
+  margin-top:70px;
 }
+h1{
+  font-family: Robota;
+
+}
+
 table
 {
-	border:solid #dcdcdc 1px;
-	padding:25px;
-	box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+
+  float: center;
+ 
+  padding:15px;
+  background-color: white;
+   border-radius: 6px;
+   box-shadow: 0px 0px 4px 4px black;
 }
+
 table tr,td
 {
-	padding:15px;
-	//border:solid #e1e1e1 1px;
+  
+  padding:15px;
+  height:50px;
+
+  //border:solid #e1e1e1 1px;
 }
+
+
 table tr td input
 {
-	width:97%;
-	height:45px;
-	border:solid #e1e1e1 1px;
-	border-radius:3px;
-	padding-left:10px;
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:16px;
-	background:#f9f9f9;
-	transition-duration:0.5s;
-	box-shadow: inset 0px 0px 1px rgba(0,0,0,0.4);
+  width:97%;
+  height:45px;
+  border:solid #e1e1e1 1px;
+  padding-left:10px;
+  font-family: Headmaster;
+  font-size:16px;
+  background:#f9f9f9;
+  color: black;
+  transition-duration:0.5s;
+  box-shadow: inset 0px 0px 3px rgba(0,0,0,0.4);
 }
 
 table tr td button
 {
-	width:100%;
-	height:45px;
-	border:0px;
-	background:rgba(12,45,78,11);
-	background:-moz-linear-gradient(top, #595959 , #515151);
-	border-radius:3px;
-	box-shadow: 1px 1px 1px rgba(1,0,0,0.2);
-	color:#f9f9f9;
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:18px;
-	font-weight:bolder;
-	text-transform:uppercase;
+  
+  padding-bottom: 10px;
+  float: center;
+  width:100%;
+  height:45px;
+  border:0px;
+  text-decoration:none;
+  background-color:black;
+   z-index: 50;
+  border-radius:3px;
+  box-shadow: 1px 3px 3px black;
+  color: white;
+  font-family: TimesNewRoman;
+  font-size:20px;
+  font-weight:bolder;
+  text-transform: uppercase;
 }
 table tr td button:active
 {
-	position:relative;
-	top:1px;
+  color: white;
+  position:relative;
+  top:1px;
 }
 table tr td a
 {
-	text-decoration:none;
-	color:#00a2d1;
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:18px;
+  float: center;
+  text-align: center;
+  text-decoration:none;
+  color:white;
+  font-family:Brassica;
+  font-size:20px;
 }
 
 /* css for home page  */
 
 *
 {
-	margin:0;
-	padding:0;
+  margin:0;
+  padding:0;
 }
 #header
 {
-	width:100%;
-	height:60px;
-	background:rgba(00,11,22,33);
-	color:#9fa8b0;
-	font-family:Verdana, Geneva, sans-serif;
+  width:100%;
+  height:60px;
+  background:rgba(00,11,22,33);
+  color:#9fa8b0;
+  font-family:Verdana, Geneva, sans-serif;
 }
 #header #left
-{
-	float:left;
-	position:relative;
+{ 
+  float:left;
+  position:relative;
 }
 #header #left label
 {
-	position:relative;
-	top:5px;
-	left:100px;
-	font-size:35px;
+  position:relative;
+  top:5px;
+  left:100px;
+  font-size:35px;
 }
 #header #right
 {
-	float:right;
-	position:relative;
+  float:right;
+  position:relative;
 }
 #header #right #content
 {
-	position:relative;
-	top:20px;
-	right:100px;
-	color:#fff;
+  position:relative;
+  top:20px;
+  right:100px;
+  color:#fff;
 }
 #header #right #content a
 {
-	color:#00a2d1;
+  color:#00a2d1;
 }
 .central {
   background-image:url("2n18j89.jpg");
@@ -129,26 +152,34 @@ table tr td a
 
 #body
 {
-	text-align:center;
-	margin-top:150px;
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:36px;
+  text-align:center;
+  margin-top:150px;
+  font-family:Verdana, Geneva, sans-serif;
+  font-size:36px;
 }
 
 /* css for home page */
 /* CSS for ldap_Login */
 
+
 nav ul a,
 nav .brand-logo {
   color: #444;
+  float: left;
 }
-
+ 
 p {
   line-height: 2rem;
 }
 
 .button-collapse {
   color: #26a69a;
+}
+
+#header-logo img{
+  width: 60px;
+  height: 63px;
+  margin: 0px;
 }
 
 .parallax-container {
