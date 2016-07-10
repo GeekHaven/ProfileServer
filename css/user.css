@@ -169,19 +169,25 @@ body{
   font-weight: lighter;
 }
 
-.user-profile #user-about-stuff #user-info2{
-  width: 100px;
+
+
+#container{
+  position: relative;
   height: 408px;
-  margin: 30px;
-  /*padding: 10px 20px;*/
-  display: inline-block;
-  background-color: darkturquoise;
-  /*border: 1px solid lightblue;*/
-  /*border-radius: 5px;*/
-  /*border-right: 1px solid grey;*/
+  padding: 0px;
+  width: 100%;
+  margin: 30px 0px;
 }
 
-.user-profile #user-about-stuff #user-info2 .icon-container{
+ #user-info2{
+  width: 100px;
+  height: 100%;;
+  margin: 0px;
+  display: inline-block;
+  background-color: darkturquoise;
+}
+
+#user-info2 .icon-container{
   width: 70px;
   height: 70px;
   padding: 10px;
@@ -191,28 +197,69 @@ body{
   transition: background-color .3s;
 }
 
-.user-profile #user-about-stuff #user-info2 .icon-container:hover{
-  background-color: darkturquoise;
-}
-
-.user-profile #user-about-stuff #user-info2 .icon-container:hover i{
-  color: white;
-}
-
-.user-profile #user-about-stuff #user-info2 .icons{
+#user-info2 .icons{
   font-size: 50px;
   color: darkturquoise;
   transition: color .3s;
 }
 
-.user-profile #user-about-stuff #user-info3{
+#user-info2 .icon-container:hover{
+  background-color: darkturquoise;
+}
 
-  width: 80%;
-  /*right: 20px;*/
-  margin: 20px 30px;
-  height: 328px;
+#user-info2 .icon-container:hover i{
+  color: white;
+}
+
+#user-info3{
+  display: inline-block;
+  position: absolute;
+  height: 408px;
+  top: 0px;
+  margin: 0px;
+  right: 0px;
+  left: 100px;
+  /*height: 100%;*/
   background-color: white;
   border: 1px solid lightblue;
   display: inline-block;
-  overflow-y: auto;
+  overflow-y: hidden;
+}
+
+#user-info3 .half{
+  width: 50%;
+  height: 408px;
+  margin: 0px;
+  /*display: inline-block;*/
+  overflow-x:hidden;
+  overflow-y: hidden;
+}
+
+#user-info3 .half-left{
+  float: left;
+}
+
+#user-info3 .half-right{
+  float: right;
+}
+
+#user-info3 .half img{
+  height: 408px;
+  width: auto;
+}
+
+#user-info3 h3{
+  background-color: #f2f2f2;
+  margin: 0px;
+  padding: 20px;
+}
+
+#user-info3 td{
+  padding: 10px 30px;
+}
+
+#user-info3 tr:nth-child(even) {background-color: #f2f2f2}
+
+#user-info3 li{
+  list-style-type:disc;
 }
