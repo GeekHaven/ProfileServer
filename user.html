@@ -48,7 +48,7 @@
 			<div>
 				<div id="about-info1">
 					<table>
-						<tr title="mail address">
+						<tr title="mail address" onclick="">
 							<td><p class="detail">kasp@gmail.com </p></td>
 							<td ><i class="material-icons">mail_outline</i> </td>
 							<td class="filler"></td>
@@ -74,25 +74,25 @@
 			</div>
 			<div id="container">
 				<div  id="user-info2">
-					<div class="icon-container tooltipped" data-position="right" data-delay="50" data-tooltip="Education">
+					<div class="icon-container tooltipped" data-mark = '0' data-position="right" data-delay="50" data-tooltip="Education">
 						<i class="material-icons icons">school</i>
 					</div>
 					<hr>
-					<div class="icon-container tooltipped" data-position="right" data-delay="50" data-tooltip="Skills">
+					<div class="icon-container tooltipped" data-mark='1' data-position="right" data-delay="50" data-tooltip="Skills">
 						<i class="material-icons icons">business_center</i>
 					</div>
 					<hr>
-					<div class="icon-container tooltipped" data-position="right" data-delay="50" data-tooltip="Projects">
+					<div class="icon-container tooltipped" data-mark='2' data-position="right" data-delay="50" data-tooltip="Projects">
 						<i class="material-icons icons">laptop_mac</i>
 					</div>
 					<hr>
-					<div class="icon-container tooltipped" data-position="right" data-delay="50" data-tooltip="Resume">
+					<div class="icon-container tooltipped" data-mark='3' data-position="right" data-delay="50" data-tooltip="Resume">
 						<i class="material-icons icons">insert_drive_file</i>
 					</div>
 				</div>
 
 				<div id="user-info3">
-					<div id="education-about">
+					<div id="education-about" class="part hid sho">
 						<div class="half half-left">
 							<center>
 								<h3>Education</h3>
@@ -122,13 +122,108 @@
 							<img src="images/iiita.jpg" />
 						</div>
 					</div>
+					<div id="skill-about" class="part hid">
+						<center>
+							<h3>Skills</h3>
+						</center>
+						<table>
+							<tr>
+								<td class="skill">
+									<div class="chip">
+										<img src="images/js.png">javascript
+									</div>
+								</td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+							</tr>
+							<tr>
+								<td class="skill">
+									<div class="chip">
+										<img src="images/css3.svg">CSS-3
+									</div>
+								</td>
+								<td><span class="dot dot-select"></span></td>
+								<td><span class="dot dot-select "></span></td>
+								<td><span class="dot dot-select"></span></td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+							</tr>
+							<tr>
+								<td class="skill">
+									<div class="chip">
+										<img src="images/iiita.jpg">Machine Learning
+									</div>
+								</td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+							</tr>
+							<tr>
+								<td class="skill">
+									<div class="chip">
+										<img src="images/html.png">HTML-5
+									</div>
+								</td>
+								<td><span class="dot dot-select"></span></td>
+								<td><span class="dot dot-select "></span></td>
+								<td><span class="dot dot-select"></span></td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+							</tr>
+							<tr>
+								<td class="skill">
+									<div class="chip">
+										<img src="images/iiita.jpg">CSS-3
+									</div>
+								</td>
+								<td><span class="dot dot-select"></span></td>
+								<td><span class="dot dot-select "></span></td>
+								<td><span class="dot dot-select"></span></td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+							</tr>
+							<tr>
+								<td class="skill">
+									<div class="chip">
+										<img src="images/iiita.jpg">CSS-3
+									</div>
+								</td>
+								<td><span class="dot dot-select"></span></td>
+								<td><span class="dot dot-select "></span></td>
+								<td><span class="dot dot-select"></span></td>
+								<td><span class="dot"></span></td>
+								<td><span class="dot"></span></td>
+							</tr>
+						</table>
+					</div>
+					<div id="project-about" class="part hid" >
+						<ul class="collapsible" data-collapsible="accordion">
+					    <li>
+					      <div class="collapsible-header active"><i class="material-icons">filter_drama</i>First</div>
+					      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus g</p></div>
+					    </li>
+					    <li>
+					      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+					      <div class="collapsible-body"><p>orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus gorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus gLorem ipsum dolor sit amet.</p></div>
+					    </li>
+					    <li>
+					      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+					      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+					    </li>
+					  </ul>
+					</div>
+					<div id="resume-about" class="part hid">
+						<object width="100%" height="100%" data="images/temp.pdf"></object>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-		<br>
-		<br>
-		<br>
 
 
 		 <!-- <div id="user-badges">
