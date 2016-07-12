@@ -95,9 +95,9 @@ body{
 
 .user-profile #cover-links{
   background: url('../images/zigzag.png');
-  height: 50px;
+  height: 30px;
   position: absolute;
-  bottom: -50px;
+  bottom: -30px;
   width: 100%;
   z-index: 50;
   padding-left: 150px;
@@ -313,9 +313,19 @@ body{
   /*border: 1px solid green;*/
 }
 
-#user-info3 #project-about{
-  padding: 30px;
+#user-info3 #project-about {
+  height: 100%;
+  overflow-y: auto;
 }
+
+#user-info3 #project-about h3{
+  text-align: center;
+}
+
+#user-info3 #project-about .collapsible{
+  margin: 20px;
+}
+
 
 #user-info3 .hid{
   display: none;
