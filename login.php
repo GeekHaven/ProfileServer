@@ -52,10 +52,7 @@ if(isset($_POST['btn-login']))
           <img src="images/logo.jpg">
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down black-text">
-          <li><a href="#" id="header-user" style="color:white; font-size:20px; font-family:Robota;"><b>Minion</a></li>
-          <li><a href="#" id="header-login" style="color:white; font-size:20px; font-family:Robota;"><b>Login</b></a></li>
-          <li><a href="#" id="header-signup" style="color:white; font-size:20px; font-family:Robota;"><b>Sign Up</a></li>
-          <li><a href="#" id="header-settings" style="color:white; font-size:20px; font-family:Robota;"><b>Something</a></li>
+          <li><a href="register.php" id="header-signup" style="color:white; font-size:20px; font-family:Robota;"><b>Sign Up</a></li>
         </ul>
       </div>
   </nav>
