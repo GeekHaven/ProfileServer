@@ -6,16 +6,16 @@ include 'php_includes/logged_in_redirect.php';
 
 if(isset($_POST['btn-login']))
 {
-	$email = trim($_POST['email']);
+	$roll_no = trim($_POST['roll_no']);
 	$pass = trim($_POST['pass']);
 
-	$q1="SELECT uid,pass FROM profileserver WHERE email = ?";
+	$q1="SELECT roll_no,pass FROM ldap WHERE roll_no = ?";
 	$q1_result = $conn->prepare($q1);
-	$q1_result->execute([$email]);
+	$q1_result->execute([$roll_no]);
 	$row = $q1_result->fetch(PDO::FETCH_ASSOC);
 
 		if(count($row) > 0 && password_verify($pass,$row['pass'])){
-			$_SESSION['user'] = $row['uid'];
+			$_SESSION['user'] = $row['roll_no'];
 			header("Location: form.php");
 		}else{
 			?>
@@ -72,7 +72,7 @@ if(isset($_POST['btn-login']))
                 <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">account_circle</i>
-          <input class="validate id="icon_prefix"  type="text" name="email" required ">
+          <input class="validate id="icon_prefix"  type="text" name="roll_no" required ">
           <label for="icon_prefix">Your email</label>
         </div>
       </td>
