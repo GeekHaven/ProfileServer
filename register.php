@@ -5,38 +5,23 @@ include_once 'php_includes/dbconnect.php';
 
 if(isset($_POST['btn-signup']))
 {
-	$uname = trim($_POST['uname']);
-	$email = trim($_POST['email']);
+	$roll_no = trim($_POST['roll_no']);
 	$pass = trim($_POST['pass']);
-	$fname = trim($_POST['first_name']);
-	$lname = trim($_POST['last_name']);
-	$mname = trim($_POST['middle_name']);
-	
 	$pass = password_hash($pass, PASSWORD_DEFAULT);
 
 	// email exists or not
-	$query_email = "SELECT email FROM profileserver WHERE email= ?";
-	$result_email = $conn->prepare($query_email);
-	$result_email->execute([$email]);
-	$count_email = $result_email->rowCount(); 
-
-	// uname exists or not
-	$query_uname = "SELECT email FROM profileserver WHERE uname= ?";
-	$result_uname = $conn->prepare($query_uname);
-	$result_uname->execute([$uname]);
-	$count_uname = $result_uname->rowCount(); 
+	$query_roll_no = "SELECT roll_no FROM ldap WHERE roll_no= ?";
+	$result_roll_no = $conn->prepare($query_roll_no);
+	$result_roll_no->execute([$roll_no]);
+	$count_roll_no = $result_roll_no->rowCount(); 
 
 
-	if($count_email == 0 && $count_uname == 0){
+	if($count_roll_no == 0){
 
-		$reg = "INSERT INTO profileserver(uname,email,pass,fname,mname,lname) VALUES(:uname, :email, :pass, :fname, :mname, :lname)";
+		$reg = "INSERT INTO ldap(roll_no,pass) VALUES(:roll_no, :pass)";
 		$reg_result = $conn->prepare($reg);
-		$reg_result->bindParam(':uname',$uname);
-		$reg_result->bindParam(':email',$email);
+		$reg_result->bindParam(':roll_no',$roll_no);
 		$reg_result->bindParam(':pass',$pass);
-		$reg_result->bindParam(':fname',$fname);
-		$reg_result->bindParam(':mname',$mname);
-		$reg_result->bindParam(':lname',$lname);
 
 		if($reg_result->execute())
 		{
@@ -51,17 +36,9 @@ if(isset($_POST['btn-signup']))
 			<?php
 		}	
 
-	}else if($count_email == 0 && $count_uname != 0){
+	}else if($count_roll_no != 0){
 			?>
-			<script>alert('Sorry Username already taken ...');</script>
-			<?php
-	}else if($count_email != 0 && $count_uname == 0){
-			?>
-			<script>alert('Sorry Email Id already taken ...');</script>
-			<?php
-	}else if($count_email != 0 && $count_uname != 0){
-			?>
-			<script>alert('Sorry Username and Email Id both arealready taken ...');</script>
+			<script>alert('Sorry Roll No. already taken ...');</script>
 			<?php
 	}
 	
@@ -93,15 +70,11 @@ if(isset($_POST['btn-signup']))
           <img src="images/logo.jpg">
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down black-text">
-          <li class="active"><a href="#" id="header-user" style="color:white; font-size:20px; font-family:Robota;"><b>Minion</a></li>
-          <li><a href="#" id="header-login" style="color:white; font-size:20px; font-family:Robota;"><b>Login</b></a></li>
-          <li><a href="#" id="header-signup" style="color:white; font-size:20px; font-family:Robota;"><b>Sign Up</a></li>
-          <li><a href="#" id="header-settings" style="color:white; font-size:20px; font-family:Robota;"><b>Something</a></li>
+          <li><a href="login.php" id="header-login" style="color:white; font-size:20px; font-family:Robota;"><b>Login</b></a></li>
         </ul>
       </div>
     </nav>
     <center>
-      <div id = "snow">
         <h1> Login here </h1>
         <div class="container" id="login-form">
           <form method="post">
@@ -109,57 +82,24 @@ if(isset($_POST['btn-signup']))
               <div class="row">
               <tr>
                 <td>
-                  
+  
                     <div class="input-field col s12">
                        <i class="material-icons prefix">account_circle</i>
-                        <input class="validate" id="icon_prefix"  type="text" name="first_name" " required ">
-                        <label for="icon_prefix">FirstNamel</label>
+                        <input class="validate" id="icon_prefix"  type="text" name="roll_no" " required ">
+                        <label for="icon_prefix">Roll Number</label>
                      </div>
-      </td>
-           <td>
-                  <div class="input-field col s12">
-          <i class="material-icons prefix">account_circle</i>
-          <input class="validate id="icon_prefix"   type="text" name="last_name"required ">
-          <label for="icon_prefix">LastName</label>
-        </div>
-                  
-              </tr>
-              <tr>
-                <td>
-                  <div class="input-field col s12">
-          <i class="material-icons prefix">perm_identity</i>
-          <input class="validate id="icon_prefix"  type="text" name="uname"  required ">
-          <label for="icon_prefix">User Name</label>
-        </div>
-            </td>
+                </td>
                 <td>
                     <div class="input-field col s12">
-          <i class="material-icons prefix">mode_edit</i>
-          <input class="validate id="icon_prefix"   type="password" name="pass" required ">
-          <label for="icon_prefix">Your Password</label>
-        </div>
-          </td>
-              </tr>
-                <td>
-                       <div class="input-field col s12">
-          <i class="material-icons prefix">explicit</i>
-          <input class="validate id="icon_prefix"   type="email" name="email" required ">
-          <label for="icon_prefix">Your Email</label>
-        </div>
-                <td>
-                       <div class="input-field col s12">
-          <i class="material-icons prefix">phone</i>
-          <input class="validate id="icon_prefix"   type="text" name="contactno" required ">
-          <label for="icon_prefix">Contact No.</label>
-        </div>
-              </tr>
-              <tr>
-                
+                      <i class="material-icons prefix">mode_edit</i>
+                      <input class="validate id="icon_prefix"   type="password" name="pass" required ">
+                      <label for="icon_prefix">Your Password</label>
+                    </div>
+                </td>
               </tr>
               <tr>
                 <td colspan='2'><center> <button style="width:40%;" type="submit" name="btn-signup">Register</button></center></td>
               </tr>
-            
               <tr>
                 <td bgcolor="#006064" colspan='2'><a href="login.php"><center>Already Registered? Login here</center></a></td>
               </tr>
