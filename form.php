@@ -2,8 +2,44 @@
 session_start();
 include 'php_includes/dbconnect.php';
 include 'php_includes/login_auth.php'; 
-
 $roll_no = $_SESSION['user'];
+
+//image upload starts
+require_once  "php_includes/bulletproof-2.0.1/bulletproof.php";
+
+$image = new Bulletproof\Image($_FILES);
+
+if($image["dp"]){
+	$image->setName($roll_no."_dp");
+	$image->setMime(["jpeg"]); 
+    $image->setSize("128","1048576"); 
+    $image->setDimension("1920","1920");
+    $image->setLocation("images/user_img", "0644");  
+    $upload = $image->upload(); 
+     
+    if($upload){
+        echo "image uploaded";
+    }else{
+        echo $image["error"]; 
+    }
+}
+
+if($image["cover"]){
+	$image->setName($roll_no."_cover");
+	$image->setMime(["jpeg"]); 
+    $image->setSize("128","1048576"); 
+    $image->setDimension("1920","1920");
+    $image->setLocation("images/user_img", "0644");  
+    $upload = $image->upload(); 
+     
+    if($upload){
+        echo "image uploaded";
+    }else{
+        echo $image["error"]; 
+    }
+}
+//image upload ends
+
 $q = "SELECT * FROM user_info WHERE roll_no = :roll_no";
 $q_result = $conn->prepare($q);
 $q_result->bindParam(':roll_no',$roll_no);
@@ -32,8 +68,6 @@ if($user_count == 0){
 	$course_degree = $field_array['course_degree'];
 	$course_area = $field_array['course_area'];
 	$about = $field_array['about'];
-	$dp_link = $field_array['dp_link'];
-	$cover_link = $field_array['cover_link'];
 	$contact_no = $field_array['contact_no'];
 	$fb_link = $field_array['fb_link'];
 	$gp_link = $field_array['gp_link'];
@@ -84,9 +118,17 @@ if($user_count == 0){
 	Contact No.
 	<input type = "number"  id ="contact_no"  value ="<?php echo $contact_no; ?>" maxLength="10"readonly></input><br><br>
 	Profile picture
-	<input type = "url"  id ="dp_link"  value ="<?php echo $dp_link; ?>" readonly></input><br><br>
+	<form method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+    <input type="file" name="dp"/>
+    <input type="submit" value="upload"/>
+    </form>
 	Cover Photo
-	<input type = "url"  id ="cover_link"  value ="<?php echo $cover_link; ?>" readonly></input><br><br>
+	<form method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+    <input type="file" name="cover"/>
+    <input type="submit" value="upload"/>
+    </form>
 	Facebook profile link
 	<input type = "url"  id ="fb_link"  value ="<?php echo $fb_link; ?>" readonly></input><br><br>
 	Google Plus profile link

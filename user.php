@@ -23,8 +23,6 @@ if($user_count == 0){
 	$course_degree = $field_array['course_degree'];
 	$course_area = $field_array['course_area'];
 	$about = $field_array['about'];
-	$dp_link = $field_array['dp_link'];
-	$cover_link = $field_array['cover_link'];
 	$contact_no = $field_array['contact_no'];
 	$fb_link = $field_array['fb_link'];
 	$gp_link = $field_array['gp_link'];
@@ -64,10 +62,10 @@ if($user_count == 0){
    <div class="user-profile">
      <div id="cover-profile">
        <div id="cover-photo">
-         <img src=<?php echo "\"".$cover_link."\"" ?>>
+         <img src=<?php echo "\"images/user_img/".$roll_no."_cover.jpeg\"" ?>>
        </div>
        <span id="profile-picture">
-        <center><img src=<?php echo "\"".$dp_link."\"" ?>/></center>
+        <center><img src=<?php echo "\"images/user_img/".$roll_no."_dp.jpeg\"" ?>/></center>
        </span>
      </div>
     <!-- <div id="cover-links">
