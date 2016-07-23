@@ -10,11 +10,13 @@ require_once  "php_includes/bulletproof-2.0.1/bulletproof.php";
 $image = new Bulletproof\Image($_FILES);
 
 if($image["dp"]){
+
 	$image->setName($roll_no."_dp");
 	$image->setMime(["jpeg"]); 
     $image->setSize("128","1048576"); 
     $image->setDimension("1920","1920");
     $image->setLocation("images/user_img", "0644");  
+
     $upload = $image->upload(); 
      
     if($upload){
@@ -25,11 +27,13 @@ if($image["dp"]){
 }
 
 if($image["cover"]){
+
 	$image->setName($roll_no."_cover");
 	$image->setMime(["jpeg"]); 
     $image->setSize("128","1048576"); 
     $image->setDimension("1920","1920");
-    $image->setLocation("images/user_img", "0644");  
+    $image->setLocation("images/user_img", "0644"); 
+
     $upload = $image->upload(); 
      
     if($upload){
@@ -39,6 +43,30 @@ if($image["cover"]){
     }
 }
 //image upload ends
+
+//pdf upload starts
+if(isset($_POST["submit"]))
+{
+	if ($_FILES['resume']['error'] !== UPLOAD_ERR_OK) {
+	    die("Upload failed with error " . $_FILES['file']['error']);
+	}
+
+	$finfo = finfo_open(FILEINFO_MIME_TYPE);
+	$mime = finfo_file($finfo, $_FILES['resume']['tmp_name']);
+	$ok = false;
+
+	if($mime == "application/pdf"){
+		$ok = true;
+	} else{
+		echo "Sorry,the file was not uploaded";
+	}
+
+	if($ok == true){
+		move_uploaded_file($_FILES['resume']['tmp_name'],dirname(__FILE__)."/images/user_pdf/".$roll_no."_resume.pdf");
+		echo "The file was successfully uploaded";
+	}
+}
+//pdf upload ends
 
 $q = "SELECT * FROM user_info WHERE roll_no = :roll_no";
 $q_result = $conn->prepare($q);
@@ -75,7 +103,7 @@ if($user_count == 0){
 	$gh_link = $field_array['gh_link'];
 	$custom_link_1 = $field_array['custom_link_1'];
 	$custom_link_2 = $field_array['custom_link_2'];
-	$resume_link = $field_array['resume_link'];
+
 
 
 ?>
@@ -141,9 +169,11 @@ if($user_count == 0){
 	<input type = "url"  id ="custom_link_1"  value ="<?php echo $custom_link_1; ?>" readonly></input><br><br>
 	Website Link 2
 	<input type = "url"  id ="custom_link_2"  value ="<?php echo $custom_link_2; ?>" readonly></input><br><br>
-	Resume Link
-	<input type = "url"  id ="resume_link"  value ="<?php echo $resume_link; ?>" readonly></input><br><br>
-
+	<form method="post" enctype="multipart/form-data">
+	    Select pdf to upload:
+	    <input type="file" name="resume" id="resume">
+	    <input type="submit" value="upload" name="submit">
+	</form>
 	<h3 id="alert"></h3>
 
 	<script type="text/javascript" src="js/form.js"></script>

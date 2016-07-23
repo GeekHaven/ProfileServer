@@ -30,7 +30,7 @@ if($user_count == 0){
 	$gh_link = $field_array['gh_link'];
 	$custom_link_1 = $field_array['custom_link_1'];
 	$custom_link_2 = $field_array['custom_link_2'];
-	$resume_link = $field_array['resume_link'];
+
 
 ?>
 <html>
@@ -249,7 +249,7 @@ if($user_count == 0){
 					  </ul>
 					</div>
 					<div id="resume-about" class="part hid">
-						<object width="100%" height="100%" data=<?php echo "\"".$resume_link."\""?>></object>
+						<object width="100%" height="100%" data=<?php echo "\"images/user_pdf/".$roll_no."_resume.pdf\""?>></object>
 					</div>
 				</div>
 			</div>
