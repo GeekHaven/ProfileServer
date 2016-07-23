@@ -28,7 +28,7 @@ if(isset($_POST['btn-signup']))
 			?>
 			<script>alert('successfully registered ');</script>
 			<?php
-				header("Location: login.php");
+				header("Location: login");
 		}
 		else{
 			?>
@@ -70,7 +70,7 @@ if(isset($_POST['btn-signup']))
           <img src="images/logo.jpg">
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down black-text">
-          <li><a href="login.php" id="header-login" style="color:white; font-size:20px; font-family:Robota;"><b>Login</b></a></li>
+          <li><a href="login" id="header-login" style="color:white; font-size:20px; font-family:Robota;"><b>Login</b></a></li>
         </ul>
       </div>
     </nav>
@@ -101,7 +101,7 @@ if(isset($_POST['btn-signup']))
                 <td colspan='2'><center> <button style="width:40%;" type="submit" name="btn-signup">Register</button></center></td>
               </tr>
               <tr>
-                <td bgcolor="#006064" colspan='2'><a href="login.php"><center>Already Registered? Login here</center></a></td>
+                <td bgcolor="#006064" colspan='2'><a href="login"><center>Already Registered? Login here</center></a></td>
               </tr>
             </div>
             </table>

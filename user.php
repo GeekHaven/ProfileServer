@@ -9,7 +9,7 @@ $q_result->bindParam(':roll_no',$roll_no);
 $q_result->execute();
 $user_count = $q_result->rowCount();
 if($user_count == 0){
-	?><script> alert('No such user exists') </script><?php
+	header('Location: 404');
 }
 
 	$field_array = $q_result->fetch(PDO::FETCH_ASSOC);
@@ -54,9 +54,9 @@ if($user_count == 0){
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       	<!-- <img src="minion.jpg" id="profile-picture-small"> -->
         <li class="active"><a href="#" id="header-user">Minion</a></li>
-        <li><a href="#" id="header-login">Login</a></li>
-        <li><a href="#" id="header-signup">Sign Up</a></li>
-        <li><a href="form.php" id="header-settings"><i class="material-icons setting-button">settings</i></a></li>
+        <li><a href="login" id="header-login">Login</a></li>
+        <li><a href="register" id="header-signup">Sign Up</a></li>
+        <li><a href="edit" id="header-settings"><i class="material-icons setting-button">settings</i></a></li>
       </ul>
     </div>
   </nav>

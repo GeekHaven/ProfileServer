@@ -55,7 +55,7 @@ if($user_count == 0){
 	<script type="text/javascript" src="js/jquery-3.0.0.js"></script>
 </head>
 <body>
-	<a href="logout.php" style="float :right">logout</a>
+	<a href="logout" style="float :right">logout</a>
 	<h4> NOTE : double-click to edit , press enter to update</h4>
 	First Name 
 	<input type = "text"  id ="first_name" value ="<?php echo $first_name; ?>" readonly ></input><br><br>

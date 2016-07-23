@@ -16,7 +16,7 @@ if(isset($_POST['btn-login']))
 
 		if(count($row) > 0 && password_verify($pass,$row['pass'])){
 			$_SESSION['user'] = $row['roll_no'];
-			header("Location: form.php");
+			header("Location: edit");
 		}else{
 			?>
     			<script>alert('Username / Password Seems Wrong !');</script>
@@ -52,7 +52,7 @@ if(isset($_POST['btn-login']))
           <img src="images/logo.jpg">
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down black-text">
-          <li><a href="register.php" id="header-signup" style="color:white; font-size:20px; font-family:Robota;"><b>Sign Up</a></li>
+          <li><a href="register" id="header-signup" style="color:white; font-size:20px; font-family:Robota;"><b>Sign Up</a></li>
         </ul>
       </div>
   </nav>
@@ -70,7 +70,7 @@ if(isset($_POST['btn-login']))
         <div class="input-field col s12">
           <i class="material-icons prefix">account_circle</i>
           <input class="validate id="icon_prefix"  type="text" name="roll_no" required ">
-          <label for="icon_prefix">Your email</label>
+          <label for="icon_prefix">Your Roll No</label>
         </div>
       </td>
               </tr>
@@ -90,7 +90,7 @@ if(isset($_POST['btn-login']))
                 <td><button type="submit" name="btn-login">Sign In</button></td>
               </tr>
               <tr>
-                <td><button type="button" name="signup" onclick ="window.location.assign('register.php')">Create a New Account</button></td>
+                <td><button type="button" name="signup" onclick ="window.location.assign('register')">Create a New Account</button></td>
               </tr>
               </div>
             </table>
