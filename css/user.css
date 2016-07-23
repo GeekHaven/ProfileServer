@@ -1,3 +1,11 @@
+nav{
+  background-color: darkturquoise !important;
+}
+
+body{
+  background-color: lightcyan;
+}
+
 .btn-large{
   width: 25%;
   padding: 0px;
@@ -57,6 +65,8 @@
   top: 50%;
   width: 100%;
   height: auto;
+  border-radius: 10px;
+  border: 1px solid lightblue;
 }
 
 .user-profile #cover-profile #profile-picture{
@@ -101,20 +111,34 @@
 
 }
 
-.user-profile #cover-links .cover-link:hover{
-  border-bottom: 3px solid white;
+.user-profile #cover-links .cover-link img{
+  height: 100%;
 }
 
-.user-profile #user-name{
-  padding-left: 200px;
-  padding-right: 100px;
+.user-profile #cover-links .cover-link:hover{
+  border-bottom: 2px solid white;
+}
+
+.user-profile #user-name, .user-profile #user-id{
+  padding-left: 150px;
+  padding-right: 0px;
   display: inline-block;
-  width: 100%;
+  width: 75%;
   padding-bottom: 10px;
   font-weight: 300;
-  /*border-bottom: 1px solid grey;*/
+/*border-bottom: 1px solid grey;*/
 }
 
+#user-about-stuff #user-name{
+  margin-bottom: 0px;
+  margin-top: 30px;
+}
+
+#user-about-stuff #user-id{
+  margin-top: 0px;
+  margin-bottom:
+}
+/*
 .user-profile #user-about-stuff #user-badges{
   width: 40%;
   display: inline-block;
@@ -124,4 +148,189 @@
 .user-profile #user-about-stuff #user-skills{
   width: 40%;
   display: inline-block;
+}*/
+
+.user-profile #user-about-stuff #about-info1{
+    /*width: 55%;*/
+    float: right;
+    margin: 20px;
+    text-align: right;
+}
+.user-profile #user-about-stuff #about-info1 table td{
+  padding: 5px 5px;
+  text-align: right;
+  margin: 20px;
+  border-radius: 0px;
+}
+
+.user-profile #user-about-stuff #about-info1 table .filler{
+  background-color: darkturquoise;
+}
+
+.user-profile #user-about-stuff #about-me{
+  font-size: 19px;
+  font-family: serif;
+  font-weight: lighter;
+}
+
+
+
+#container{
+  position: relative;
+  height: 408px;
+  padding: 0px;
+  width: 100%;
+  margin: 30px 0px;
+}
+
+ #user-info2{
+  width: 100px;
+  height: 100%;;
+  margin: 0px;
+  display: inline-block;
+  background-color: darkturquoise;
+}
+
+#user-info2 .icon-container{
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  border-radius: 50%;
+  margin: 15px;
+  background-color: white;
+  transition: background-color .3s;
+}
+
+#user-info2 .icons{
+  font-size: 50px;
+  color: darkturquoise;
+  transition: color .3s;
+}
+
+#user-info2 .icon-container:hover{
+  background-color: darkturquoise;
+}
+
+#user-info2 .icon-container:hover i{
+  color: white;
+}
+
+#user-info3{
+  display: inline-block;
+  position: absolute;
+  height: 408px;
+  top: 0px;
+  margin: 0px;
+  right: 0px;
+  left: 100px;
+  /*height: 100%;*/
+  background-color: white;
+  border: 1px solid lightblue;
+  display: inline-block;
+  overflow-y: hidden;
+}
+
+#user-info3 .half{
+  width: 50%;
+  height: 408px;
+  margin: 0px;
+  /*display: inline-block;*/
+  overflow-x:hidden;
+  overflow-y: hidden;
+}
+
+#user-info3 .half-left{
+  float: left;
+}
+
+#user-info3 .half-right{
+  float: right;
+}
+
+#user-info3 .someimage{
+  height: 408px;
+  width: auto;
+  align-self: center;
+}
+
+#user-info3 h3{
+  background-color: #f2f2f2;
+  margin: 0px;
+  padding: 20px;
+}
+
+#user-info3 #education-about td{
+  padding: 10px 30px;
+}
+
+#user-info3 #education-about img{
+  height: 100%;
+}
+
+#user-info3 tr:nth-child(even) {background-color: #f2f2f2}
+
+#user-info3 #skill-about {
+  margin-right: 15%;
+  margin-left: 15%;
+  height: 100%;
+  overflow-y:;
+
+}
+
+#user-info3 #skill-about .skill{
+  padding: 7px 30px;
+  width: 250px;
+}
+#user-info3 #education-about li{
+  list-style-type:disc;
+}
+
+#user-info3 #skill-about .chip{
+  border-radius: 0px 16px 16px 0px;
+}
+
+#user-info3 #skill-about .chip img{
+  /*margin: 1px;*/
+  border-radius: 0px;
+}
+
+#user-info3 #skill-about .dot{
+  position: absolute;
+  /*top:0px;*/
+  margin: -5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  /*border: 1px solid yellow;*/
+  background-color: cyan;
+  box-shadow: -1px 1px 2px 1px lightblue;
+  border: 1px solid aqua;
+}
+
+#user-info3 #skill-about .dot-select{
+  background-color: lightgreen;
+  border: 1px solid tan;
+  /*border: 1px solid green;*/
+}
+
+#user-info3 #project-about {
+  height: 100%
+  overflow-y: auto;
+}
+
+#user-info3 #project-about h3{
+  text-align: center;
+}
+
+#user-info3 #project-about .collapsible{
+  margin: 20px;
+}
+
+
+#user-info3 .hid{
+  display: none;
+}
+
+#user-info3 .sho{
+  display: block;
 }
