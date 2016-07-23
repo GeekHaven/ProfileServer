@@ -45,6 +45,8 @@ if($image["cover"]){
 //image upload ends
 
 //pdf upload starts
+//please check if fileinfo is enabled on your server,
+//some hosting providers do not give access to fileinfo functionality by default
 if(isset($_POST["submit"]))
 {
 	if ($_FILES['resume']['error'] !== UPLOAD_ERR_OK) {
