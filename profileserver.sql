@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 23, 2016 at 06:20 PM
+-- Generation Time: Jul 24, 2016 at 04:23 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -72,6 +72,50 @@ CREATE TABLE `user_info` (
 INSERT INTO `user_info` (`roll_no`, `email`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `grad_year`, `batch`, `course_degree`, `course_area`, `about`, `contact_no`, `fb_link`, `gp_link`, `li_link`, `gh_link`, `custom_link_1`, `custom_link_2`) VALUES
 ('iit2015074', 'shubhamapadia@gmail.com', 'Shubham', 'A', 'Padia', '2016-07-02', 2019, 2015, 'B.tech', 'IT', 'about me', '9918463021', 'dasda', 'asdfdsf', 'dasdsd', 'dasdasd', 'asddasd', 'sdsad');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_projects`
+--
+
+CREATE TABLE `user_projects` (
+  `project_id` int(11) NOT NULL,
+  `roll_no` varchar(10) NOT NULL,
+  `project_title` varchar(255) NOT NULL,
+  `project_about` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_projects`
+--
+
+INSERT INTO `user_projects` (`project_id`, `roll_no`, `project_title`, `project_about`) VALUES
+(7, 'iit2015074', 'Project 1', 'orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus gorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus gLorem ipsum dolor sit amet.'),
+(8, 'iit2015074', 'Project 2', 'orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus gorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus gLorem ipsum dolor sit amet.'),
+(9, 'iit2015074', 'Project 3', 'orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus gorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus gLorem ipsum dolor sit amet.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_skills`
+--
+
+CREATE TABLE `user_skills` (
+  `skill_id` int(11) NOT NULL,
+  `roll_no` varchar(10) NOT NULL,
+  `skill_title` varchar(255) NOT NULL,
+  `skill_points` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_skills`
+--
+
+INSERT INTO `user_skills` (`skill_id`, `roll_no`, `skill_title`, `skill_points`) VALUES
+(1, 'iit2015074', 'Javascript', 0),
+(2, 'iit2015074', 'CSS - 3', 4),
+(6, 'iit2015074', 'New Skill', 5);
+
 --
 -- Indexes for dumped tables
 --
@@ -88,6 +132,32 @@ ALTER TABLE `ldap`
 ALTER TABLE `user_info`
   ADD PRIMARY KEY (`roll_no`);
 
+--
+-- Indexes for table `user_projects`
+--
+ALTER TABLE `user_projects`
+  ADD PRIMARY KEY (`project_id`);
+
+--
+-- Indexes for table `user_skills`
+--
+ALTER TABLE `user_skills`
+  ADD PRIMARY KEY (`skill_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user_projects`
+--
+ALTER TABLE `user_projects`
+  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `user_skills`
+--
+ALTER TABLE `user_skills`
+  MODIFY `skill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
