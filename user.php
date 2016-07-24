@@ -35,6 +35,10 @@ $project_q = "SELECT * from user_projects WHERE roll_no = :roll_no";
 $project_q_result = $conn->prepare($project_q);
 $project_q_result->bindParam(":roll_no",$roll_no);
 
+$skill_q = "SELECT * FROM user_skills WHERE roll_no = :roll_no";
+$skill_q_result = $conn->prepare($skill_q);
+$skill_q_result->bindParam(":roll_no",$roll_no);
+
 ?>
 <html>
 <head>
@@ -160,78 +164,30 @@ $project_q_result->bindParam(":roll_no",$roll_no);
 							<h3>Skills</h3>
 						</center>
 						<table>
-							<tr>
-								<td class="skill">
-									<div class="chip">
-										<img src="images/js.png">javascript
-									</div>
-								</td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-							</tr>
-							<tr>
-								<td class="skill">
-									<div class="chip">
-										<img src="images/css3.svg">CSS-3
-									</div>
-								</td>
-								<td><span class="dot dot-select"></span></td>
-								<td><span class="dot dot-select "></span></td>
-								<td><span class="dot dot-select"></span></td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-							</tr>
-							<tr>
-								<td class="skill">
-									<div class="chip">
-										<img src="images/iiita.jpg">Machine Learning
-									</div>
-								</td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-							</tr>
-							<tr>
-								<td class="skill">
-									<div class="chip">
-										<img src="images/html.png">HTML-5
-									</div>
-								</td>
-								<td><span class="dot dot-select"></span></td>
-								<td><span class="dot dot-select "></span></td>
-								<td><span class="dot dot-select"></span></td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-							</tr>
-							<tr>
-								<td class="skill">
-									<div class="chip">
-										<img src="images/iiita.jpg">CSS-3
-									</div>
-								</td>
-								<td><span class="dot dot-select"></span></td>
-								<td><span class="dot dot-select "></span></td>
-								<td><span class="dot dot-select"></span></td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-							</tr>
-							<tr>
-								<td class="skill">
-									<div class="chip">
-										<img src="images/iiita.jpg">CSS-3
-									</div>
-								</td>
-								<td><span class="dot dot-select"></span></td>
-								<td><span class="dot dot-select "></span></td>
-								<td><span class="dot dot-select"></span></td>
-								<td><span class="dot"></span></td>
-								<td><span class="dot"></span></td>
-							</tr>
+						<?php
+							if($skill_q_result->execute()){
+								
+								if($skill_q_result->rowCount() != 0){
+
+									while($row = $skill_q_result->fetch(PDO::FETCH_ASSOC)){
+										echo '<td class="skill"><div class="chip"><img src="images/iiita.jpg">';
+										echo $row['skill_title'];
+										echo '</div></td>';
+										$skill_points = $row['skill_points'];
+										while($skill_points){
+											echo '<td><span class="dot dot-select"></span></td>';
+											$skill_points--;
+										}
+										$skill_rem = 5 - $row['skill_points'];
+										while($skill_rem){
+											echo '<td><span class="dot"></span></td>';
+											$skill_rem--;
+										}
+										echo '</tr>';
+							}
+						}
+						}
+						?>
 						</table>
 					</div>
 					<div id="project-about" class="part hid" >
@@ -239,14 +195,17 @@ $project_q_result->bindParam(":roll_no",$roll_no);
 						<ul class="collapsible" data-collapsible="accordion">
 						<?php 
 							if($project_q_result->execute()){
-								while ($row = $project_q_result->fetch(PDO::FETCH_ASSOC)){
-									echo '<li><div class="collapsible-header"><i class="material-icons">filter_drama</i>';
-									echo $row['project_title'];
-									echo '</div><div class="collapsible-body"><p>';
-									echo $row['project_about'];
-									echo '</p></div></li>';
-								}
+								if($project_q_result->rowCount()){
+
+									while ($row = $project_q_result->fetch(PDO::FETCH_ASSOC)){
+										echo '<li><div class="collapsible-header"><i class="material-icons">filter_drama</i>';
+										echo $row['project_title'];
+										echo '</div><div class="collapsible-body"><p>';
+										echo $row['project_about'];
+										echo '</p></div></li>';
+									}
 							}
+						}
 						?>
 					  </ul>
 					</div>

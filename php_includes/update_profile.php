@@ -1,9 +1,11 @@
 <?php
 session_start();
 include 'dbconnect.php';
+//include 'login_auth.php';
+
 $roll_no=$_SESSION['user'];
-$fieldname = mysql_real_escape_string($_POST['fieldname']);
-$fieldvalue = mysql_real_escape_string($_POST['fieldvalue']);
+$fieldname = $_POST['fieldname'];
+$fieldvalue = $_POST['fieldvalue'];
 
 
 $update = 'UPDATE user_info SET '.$fieldname.' = :fieldvalue WHERE roll_no = :roll_no';

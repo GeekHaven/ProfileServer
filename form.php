@@ -106,7 +106,13 @@ if($user_count == 0){
 	$custom_link_1 = $field_array['custom_link_1'];
 	$custom_link_2 = $field_array['custom_link_2'];
 
+	$project_q = "SELECT * from user_projects WHERE roll_no = :roll_no";
+	$project_q_result = $conn->prepare($project_q);
+	$project_q_result->bindParam(":roll_no",$roll_no);
 
+	$skill_q = "SELECT * FROM user_skills WHERE roll_no = :roll_no";
+	$skill_q_result = $conn->prepare($skill_q);
+	$skill_q_result->bindParam(":roll_no",$roll_no);
 
 ?>
 
@@ -116,6 +122,7 @@ if($user_count == 0){
 	<title>Edit Profile Details</title>
 	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
 	<script type="text/javascript" src="js/update_profile.js"></script>
+	<script type="text/javascript" src="js/update_project.js"></script>
 	<script type="text/javascript" src="js/jquery-3.0.0.js"></script>
 </head>
 <body>
@@ -147,6 +154,24 @@ if($user_count == 0){
 	<input type = "text"  id ="about"  value ="<?php echo $about; ?>" readonly></input><br><br>
 	Contact No.
 	<input type = "number"  id ="contact_no"  value ="<?php echo $contact_no; ?>" maxLength="10"readonly></input><br><br>
+	<?php 
+		if($project_q_result->execute()){
+			if($project_q_result->rowCount()){
+				while($row = $project_q_result->fetch(PDO::FETCH_ASSOC)){	
+					echo '<label id ="p_title_label_'.$row['project_id'].'">Project Title &nbsp&nbsp</label>';
+					echo '<input type = "text"  id ="p_title_'.$row['project_id'].'" value ="'.$row['project_title'].'" readonly></input>&nbsp&nbsp';
+					echo '<label id ="p_about_label_'.$row['project_id'].'">About Project&nbsp&nbsp</label>';
+					echo '<input type = "text"  id ="p_about_'.$row['project_id'].'" value ="'.$row['project_about'].'" readonly></input>&nbsp&nbsp';
+					echo '<button id ="p_delete_'.$row['project_id'].'" onclick = "delete_project(\''.$row['project_id'].'\');">delete</button><br><br>';
+				}
+			}
+		}
+	?>
+	<label id = "p_title_label_add">Project Title&nbsp&nbsp</label>
+	<input type = "text" id = "p_title_add" ></input>
+	<label id = "p_about_label_add">About Project&nbsp&nbsp</label>
+	<input type = "text" id = "p_about_add" ></input>
+	<button id = "p_add" onclick="add_project()">add</button><br><br>
 	Profile picture
 	<form method="POST" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
@@ -179,6 +204,27 @@ if($user_count == 0){
 	<h3 id="alert"></h3>
 
 	<script type="text/javascript" src="js/form.js"></script>
+	<script type="text/javascript">
+		<?php 
+		if($project_q_result->execute()){
+			if($project_q_result->rowCount()){
+				while($row = $project_q_result->fetch(PDO::FETCH_ASSOC)){	
+					echo '$("#p_title_'.$row['project_id'].'").dblclick(function(){$(this).removeAttr("readonly");$(this).css({"background-color":"red" , "color" : "white"});});';
+					echo '$("#p_about_'.$row['project_id'].'").dblclick(function(){$(this).removeAttr("readonly");$(this).css({"background-color":"red" , "color" : "white"});});';
+					echo '$("#p_title_'.$row['project_id'].'").bind("keyup", function(e) {if( e.keyCode === 13 ){ $(this).attr("readonly","readonly");update_project("p_title_'.$row['project_id'].'");$(this).css({"background-color":"white" , "color" : "black"});}});';
+					echo '$("#p_about_'.$row['project_id'].'").bind("keyup", function(e) {if( e.keyCode === 13 ){ $(this).attr("readonly","readonly");update_project("p_about_'.$row['project_id'].'");$(this).css({"background-color":"white" , "color" : "black"});}});';
+				}
+			}
+		}
+		?>
+	/*$('#first_name').bind('keyup', function(e) {
+	    if ( e.keyCode === 13 ) { 
+	    	$(this).attr("readonly","readonly");
+	    	update('first_name');
+	        $(this).css({"background-color":"white" , "color" : "black"});
+	    }
+	});*/
+	</script>
 
 </body>
 </html>
