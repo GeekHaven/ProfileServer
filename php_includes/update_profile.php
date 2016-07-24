@@ -1,18 +1,21 @@
 <?php
 session_start();
 include 'dbconnect.php';
-$uid=$_SESSION['user'];
-$fieldname = mysql_real_escape_string($_POST['fieldname']);
-$fieldvalue = mysql_real_escape_string($_POST['fieldvalue']);
+include 'login_auth.php';
+
+$roll_no=$_SESSION['user'];
+$fieldname = $_POST['fieldname'];
+$fieldvalue = $_POST['fieldvalue'];
 
 
-$update = 'UPDATE profileserver SET '.$fieldname.' = :fieldvalue WHERE uid = :uid';
+$update = 'UPDATE user_info SET '.$fieldname.' = :fieldvalue WHERE roll_no = :roll_no';
 $r_update = $conn->prepare($update);
 
 $r_update->bindParam(':fieldvalue',$fieldvalue);
-$r_update->bindParam(':uid',$uid);
+$r_update->bindParam(':roll_no',$roll_no);
 
 if($r_update->execute()){
+	echo $roll_no;
 	echo $fieldname." updated to ".$fieldvalue;
 }else{
 	echo "failed to update the specified field";

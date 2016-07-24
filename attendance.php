@@ -40,7 +40,7 @@ $grad_year = $field_array['grad_year'];
           <div class="nav-wrapper"><a class="page-title">Temporary navbar</a></div>
         </div>
       </nav>
-<a href="logout.php" style="float :right">logout</a>
+<a href="logout" style="float :right">logout</a>
 
 <div class="container">
 	<a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
