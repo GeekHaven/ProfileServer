@@ -31,6 +31,9 @@ if($user_count == 0){
 	$custom_link_1 = $field_array['custom_link_1'];
 	$custom_link_2 = $field_array['custom_link_2'];
 
+$project_q = "SELECT * from user_projects WHERE roll_no = :roll_no";
+$project_q_result = $conn->prepare($project_q);
+$project_q_result->bindParam(":roll_no",$roll_no);
 
 ?>
 <html>
@@ -234,18 +237,17 @@ if($user_count == 0){
 					<div id="project-about" class="part hid" >
 						<h3>Projects</h3>
 						<ul class="collapsible" data-collapsible="accordion">
-					    <li>
-					      <div class="collapsible-header active"><i class="material-icons">filter_drama</i>First</div>
-					      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus g</p></div>
-					    </li>
-					    <li>
-					      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-					      <div class="collapsible-body"><p>orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus gorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut aliquam erat, a efficitur mauris. Sed non massa et eros scelerisque dictum. Pellentesque congue molestie nulla. Vivamus at pellentesque turpis. Vestibulum ullamcorper risus eget lorem mollis cursus. Donec mattis mauris eget ipsum hendrerit luctus. Nunc vestibulum mauris eget sem suscipit, a vestibulum sapien convallis. Nulla elementum eros quis massa mollis maximus. Integer finibus gLorem ipsum dolor sit amet.</p></div>
-					    </li>
-					    <li>
-					      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-					      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-					    </li>
+						<?php 
+							if($project_q_result->execute()){
+								while ($row = $project_q_result->fetch(PDO::FETCH_ASSOC)){
+									echo '<li><div class="collapsible-header"><i class="material-icons">filter_drama</i>';
+									echo $row['project_title'];
+									echo '</div><div class="collapsible-body"><p>';
+									echo $row['project_about'];
+									echo '</p></div></li>';
+								}
+							}
+						?>
 					  </ul>
 					</div>
 					<div id="resume-about" class="part hid">
