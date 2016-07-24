@@ -123,6 +123,7 @@ if($user_count == 0){
 	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
 	<script type="text/javascript" src="js/update_profile.js"></script>
 	<script type="text/javascript" src="js/update_project.js"></script>
+	<script type="text/javascript" src="js/update_skill.js"></script>
 	<script type="text/javascript" src="js/jquery-3.0.0.js"></script>
 </head>
 <body>
@@ -154,6 +155,8 @@ if($user_count == 0){
 	<input type = "text"  id ="about"  value ="<?php echo $about; ?>" readonly></input><br><br>
 	Contact No.
 	<input type = "number"  id ="contact_no"  value ="<?php echo $contact_no; ?>" maxLength="10"readonly></input><br><br>
+	
+	<!-- project section starts -->
 	<?php 
 		if($project_q_result->execute()){
 			if($project_q_result->rowCount()){
@@ -172,6 +175,8 @@ if($user_count == 0){
 	<label id = "p_about_label_add">About Project&nbsp&nbsp</label>
 	<input type = "text" id = "p_about_add" ></input>
 	<button id = "p_add" onclick="add_project()">add</button><br><br>
+	<!-- project section ends -->
+
 	Profile picture
 	<form method="POST" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
@@ -184,6 +189,28 @@ if($user_count == 0){
     <input type="file" name="cover"/>
     <input type="submit" value="upload"/>
     </form>
+
+    <!-- skill section starts -->
+	<?php 
+		if($skill_q_result->execute()){
+			if($skill_q_result->rowCount()){
+				while($row = $skill_q_result->fetch(PDO::FETCH_ASSOC)){	
+					echo '<label id ="s_title_label_'.$row['skill_id'].'">Skill Title &nbsp&nbsp</label>';
+					echo '<input type = "text"  id ="s_title_'.$row['skill_id'].'" value ="'.$row['skill_title'].'" readonly></input>&nbsp&nbsp';
+					echo '<label id ="s_points_label_'.$row['skill_id'].'">Skill Points(Out of 5)&nbsp&nbsp</label>';
+					echo '<input type = "number" min="0" max="5" id ="s_points_'.$row['skill_id'].'" value ="'.$row['skill_points'].'" readonly></input>&nbsp&nbsp';
+					echo '<button id ="s_delete_'.$row['skill_id'].'" onclick = "delete_skill(\''.$row['skill_id'].'\');">delete</button><br><br>';
+				}
+			}
+		}
+	?>
+	<label id = "s_title_label_add">Skill Title&nbsp&nbsp</label>
+	<input type = "text" id = "s_title_add" ></input>
+	<label id = "s_points_label_add">Skill Points(Out of 5)&nbsp&nbsp</label>
+	<input type = "number" min="0" max="5" id = "s_points_add" ></input>
+	<button id = "s_add" onclick="add_skill()">add</button><br><br>
+	<!-- skill section ends -->
+
 	Facebook profile link
 	<input type = "url"  id ="fb_link"  value ="<?php echo $fb_link; ?>" readonly></input><br><br>
 	Google Plus profile link
@@ -217,13 +244,18 @@ if($user_count == 0){
 			}
 		}
 		?>
-	/*$('#first_name').bind('keyup', function(e) {
-	    if ( e.keyCode === 13 ) { 
-	    	$(this).attr("readonly","readonly");
-	    	update('first_name');
-	        $(this).css({"background-color":"white" , "color" : "black"});
-	    }
-	});*/
+		<?php 
+		if($skill_q_result->execute()){
+			if($skill_q_result->rowCount()){
+				while($row = $skill_q_result->fetch(PDO::FETCH_ASSOC)){	
+					echo '$("#s_title_'.$row['skill_id'].'").dblclick(function(){$(this).removeAttr("readonly");$(this).css({"background-color":"red" , "color" : "white"});});';
+					echo '$("#s_points_'.$row['skill_id'].'").dblclick(function(){$(this).removeAttr("readonly");$(this).css({"background-color":"red" , "color" : "white"});});';
+					echo '$("#s_title_'.$row['skill_id'].'").bind("keyup", function(e) {if( e.keyCode === 13 ){ $(this).attr("readonly","readonly");update_skill("s_title_'.$row['skill_id'].'");$(this).css({"background-color":"white" , "color" : "black"});}});';
+					echo '$("#s_points_'.$row['skill_id'].'").bind("keyup", function(e) {if( e.keyCode === 13 ){ if($(this).val() == ""){ alert("please enter a number");} else if( $(this).val() >=0 && $(this).val() < 6 ) {$(this).attr("readonly","readonly");update_skill("s_points_'.$row['skill_id'].'");$(this).css({"background-color":"white" , "color" : "black"});} else {alert("please enter a valid input")}}});';
+				}
+			}
+		}
+		?>
 	</script>
 
 </body>

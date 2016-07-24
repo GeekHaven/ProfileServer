@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'dbconnect.php';
-//include 'login_auth.php';
+include 'login_auth.php';
 
 $roll_no=$_SESSION['user'];
 $fieldname = $_POST['fieldname'];
