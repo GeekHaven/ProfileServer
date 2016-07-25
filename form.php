@@ -69,7 +69,9 @@ if(isset($_POST["submit"]))
 	}
 
 	if($ok == true){
-		move_uploaded_file($_FILES['resume']['tmp_name'],dirname(__FILE__)."/images/user_pdf/".$roll_no."_resume.pdf");
+		if(move_uploaded_file($_FILES['resume']['tmp_name'],dirname(__FILE__)."/images/user_pdf/".$roll_no."_resume.pdf")){
+			chmod(dirname(__FILE__)."/images/user_pdf/".$roll_no."_resume.pdf",0666);
+		}
 		echo "The file was successfully uploaded";
 	}
 }
@@ -129,6 +131,7 @@ if($user_count == 0){
 	<script type="text/javascript" src="js/update_profile.js"></script>
 	<script type="text/javascript" src="js/update_project.js"></script>
 	<script type="text/javascript" src="js/update_skill.js"></script>
+	<script type="text/javascript" src="js/delete_resume.js"></script>
 	<script type="text/javascript" src="js/jquery-3.0.0.js"></script>
 </head>
 <body>
@@ -233,6 +236,8 @@ if($user_count == 0){
 	    <input type="file" name="resume" id="resume">
 	    <input type="submit" value="upload" name="submit">
 	</form>
+	<button onclick="delete_resume()">delete existing resume</button>
+	
 	<h3 id="alert"></h3>
 
 	<script type="text/javascript" src="js/form.js"></script>
