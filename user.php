@@ -42,8 +42,8 @@ $project_q_result->bindParam(":roll_no",$roll_no);
 $skill_q = "SELECT * FROM user_skills WHERE roll_no = :roll_no";
 $skill_q_result = $conn->prepare($skill_q);
 $skill_q_result->bindParam(":roll_no",$roll_no);
-
 ?>
+
 <html>
 <head>
 	<meta charset="utf-8"/>
@@ -79,13 +79,6 @@ $skill_q_result->bindParam(":roll_no",$roll_no);
         <center><img src=<?php echo "\"images/user_img/".nohtml($roll_no)."_dp.jpeg\"" ?>/></center>
        </span>
      </div>
-    <!-- <div id="cover-links">
-        <a  class="waves-effect waves-light btn-large cover-link" id="coverlink-1"><b>Friends - </b><h7 id="coverlink-1-value">100</h7></a>
-        <a class="waves-effect waves-light btn-large cover-link" id="coverlink-2"><b>Followers - </b><h7 id="coverlink-2-value">30</h7></a>
-        <a class="waves-effect waves-light btn-large cover-link" id="coverlink-3"><b>Subjects</b></a>
-        <a class="waves-effect waves-light btn-large cover-link" id="coverlink-4"><b>Option</b></a>
-      </div>
-      <br><br>-->
 		<div id="user-about-stuff">
 			<div>
 				<div id="about-info1">
@@ -116,23 +109,32 @@ $skill_q_result->bindParam(":roll_no",$roll_no);
 			</div>
 			<div id="container">
 				<div  id="user-info2">
-					<div class="icon-container tooltipped" data-mark = '0' data-position="right" data-delay="50" data-tooltip="Education">
+					<div class="icon-container tooltipped" data-mark = "0" data-position="right" data-delay="50" data-tooltip="Education">
 						<i class="material-icons icons">school</i>
 					</div>
 					<hr>
-					<div class="icon-container tooltipped" data-mark='1' data-position="right" data-delay="50" data-tooltip="Skills">
-						<i class="material-icons icons">business_center</i>
+					<?php
+					if($skill_q_result->execute()){			
+						if($skill_q_result->rowCount() != 0){
+							echo '<div class="icon-container tooltipped" data-mark="1" data-position="right" data-delay="50" data-tooltip="Skills">';
+							echo '<i class="material-icons icons">business_center</i></div><hr>';
+						}
+					}
+					if($project_q_result->execute()){
+						if($project_q_result->rowCount() != 0){
+							echo '<div class="icon-container tooltipped" data-mark="2" data-position="right" data-delay="50" data-tooltip="Projects">';
+							echo '<i class="material-icons icons">laptop_mac</i></div><hr>';
+						}
+					}
+					if(file_exists('images/user_pdf/'.$roll_no.'_resume.pdf')){
+						echo '<div class="icon-container tooltipped" data-mark="3" data-position="right" data-delay="50" data-tooltip="Resume">';
+						echo '<i class="material-icons icons">insert_drive_file</i></div>';
+					}
+					else{
+						echo "file does not exist";
+					}
+					?>
 					</div>
-					<hr>
-					<div class="icon-container tooltipped" data-mark='2' data-position="right" data-delay="50" data-tooltip="Projects">
-						<i class="material-icons icons">laptop_mac</i>
-					</div>
-					<hr>
-					<div class="icon-container tooltipped" data-mark='3' data-position="right" data-delay="50" data-tooltip="Resume">
-						<i class="material-icons icons">insert_drive_file</i>
-					</div>
-				</div>
-
 				<div id="user-info3">
 					<div id="education-about" class="part hid sho">
 						<div class="half half-left">
@@ -164,15 +166,12 @@ $skill_q_result->bindParam(":roll_no",$roll_no);
 						</div>
 					</div>
 					<div id="skill-about" class="part hid">
-						<center>
-							<h3>Skills</h3>
-						</center>
-						<table>
-						<?php
+					<?php
 							if($skill_q_result->execute()){
 								
 								if($skill_q_result->rowCount() != 0){
-
+									echo '<center><h3>Skills</h3></center>';
+									echo '<table>';
 									while($row = $skill_q_result->fetch(PDO::FETCH_ASSOC)){
 										echo '<td class="skill"><div class="chip"><img src="images/iiita.jpg">';
 										echo nohtml($row['skill_title']);
@@ -187,17 +186,17 @@ $skill_q_result->bindParam(":roll_no",$roll_no);
 											echo '<td><span class="dot"></span></td>';
 											$skill_rem--;
 										}
-										echo '</tr>';
+										echo '</tr></table>';
 							}
 						}
 						}
 						?>
-						</table>
-					</div>
+					</div>	 
+
 					<div id="project-about" class="part hid" >
-						<h3>Projects</h3>
-						<ul class="collapsible" data-collapsible="accordion">
-						<?php 
+						<?php
+							echo '<h3>Projects</h3>';
+							echo '<ul class="collapsible" data-collapsible="accordion">'; 
 							if($project_q_result->execute()){
 								if($project_q_result->rowCount()){
 
@@ -208,11 +207,12 @@ $skill_q_result->bindParam(":roll_no",$roll_no);
 										echo nohtml($row['project_about']);
 										echo '</p></div></li>';
 									}
+								echo '</ul>';
 							}
 						}
 						?>
-					  </ul>
-					</div>
+						</div>
+						
 					<div id="resume-about" class="part hid">
 						<object width="100%" height="100%" data=<?php echo "\"images/user_pdf/".nohtml($roll_no)."_resume.pdf\""?>></object>
 					</div>
