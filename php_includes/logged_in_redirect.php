@@ -4,6 +4,6 @@ include_once 'dbconnect.php';
 
 if(isset($_SESSION['user']))
 {
-header("Location: form.php");
+header("Location: edit");
 }
 ?>

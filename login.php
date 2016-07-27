@@ -6,17 +6,17 @@ include 'php_includes/logged_in_redirect.php';
 
 if(isset($_POST['btn-login']))
 {
-	$email = trim($_POST['email']);
+	$roll_no = trim($_POST['roll_no']);
 	$pass = trim($_POST['pass']);
 
-	$q1="SELECT uid,pass FROM profileserver WHERE email = ?";
+	$q1="SELECT roll_no,pass FROM ldap WHERE roll_no = ?";
 	$q1_result = $conn->prepare($q1);
-	$q1_result->execute([$email]);
+	$q1_result->execute([$roll_no]);
 	$row = $q1_result->fetch(PDO::FETCH_ASSOC);
 
 		if(count($row) > 0 && password_verify($pass,$row['pass'])){
-			$_SESSION['user'] = $row['uid'];
-			header("Location: form.php");
+			$_SESSION['user'] = $row['roll_no'];
+			header("Location: edit");
 		}else{
 			?>
     			<script>alert('Username / Password Seems Wrong !');</script>
@@ -52,10 +52,7 @@ if(isset($_POST['btn-login']))
           <img src="images/logo.jpg">
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down black-text">
-          <li><a href="#" id="header-user" style="color:white; font-size:20px; font-family:Robota;"><b>Minion</a></li>
-          <li><a href="#" id="header-login" style="color:white; font-size:20px; font-family:Robota;"><b>Login</b></a></li>
-          <li><a href="#" id="header-signup" style="color:white; font-size:20px; font-family:Robota;"><b>Sign Up</a></li>
-          <li><a href="#" id="header-settings" style="color:white; font-size:20px; font-family:Robota;"><b>Something</a></li>
+          <li><a href="register" id="header-signup" style="color:white; font-size:20px; font-family:Robota;"><b>Sign Up</a></li>
         </ul>
       </div>
   </nav>
@@ -72,8 +69,8 @@ if(isset($_POST['btn-login']))
                 <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">account_circle</i>
-          <input class="validate id="icon_prefix"  type="text" name="email" required ">
-          <label for="icon_prefix">Your email</label>
+          <input class="validate id="icon_prefix"  type="text" name="roll_no" required ">
+          <label for="icon_prefix">Your Roll No</label>
         </div>
       </td>
               </tr>
@@ -93,7 +90,7 @@ if(isset($_POST['btn-login']))
                 <td><button type="submit" name="btn-login">Sign In</button></td>
               </tr>
               <tr>
-                <td><button type="button" name="signup" onclick ="window.location.assign('register.php')">Create a New Account</button></td>
+                <td><button type="button" name="signup" onclick ="window.location.assign('register')">Create a New Account</button></td>
               </tr>
               </div>
             </table>
