@@ -4,18 +4,18 @@ include 'php_includes/dbconnect.php';
 include 'php_includes/login_auth.php'; 
 
 $uid = $_SESSION['user'];
-$q = "SELECT * FROM profileserver WHERE uid = :uid";
+$q = "SELECT * FROM b2k15a WHERE rollnum = :uid";
 $q_result = $conn->prepare($q);
 $q_result->bindParam(':uid',$uid);
 $q_result->execute();
 $field_array = $q_result->fetch(PDO::FETCH_ASSOC);
-$fname = $field_array['fname'];
-$mname = $field_array['mname'];
-$lname = $field_array['lname'];
-$uname = $field_array['uname'];
-$course = $field_array['course'];
-$dob = $field_array['dob'];
-$grad_year = $field_array['grad_year'];
+//$fname = $field_array['fname'];
+//$mname = $field_array['mname'];
+//$lname = $field_array['lname'];
+//$uname = $field_array['uname'];
+//$course = $field_array['course'];
+//$dob = $field_array['dob'];
+//$grad_year = $field_array['grad_year'];
 ?>
 
 
@@ -77,20 +77,20 @@ $grad_year = $field_array['grad_year'];
               <tbody>
 
                 	    <?php
-							$sql = "SELECT uid,fname,mname,lname FROM profileserver;";
+							$sql = "SELECT * from b2k15a";
 							$sql_result = $conn->prepare($sql);
 							$sql_result->execute();
 							while($row = $sql_result->fetch())
 							 {
 							  echo "<tr>";
-							  echo "<td>".$row['uid']."</td>";
-							  echo "<td>".$row['fname']." ".$row['mname']." ".$row['lname']." "."</font></td>";
+							  echo "<td>".$row['rollnum']."</td>";
+							  //echo "<td>".$row['fname']." ".$row['mname']." ".$row['lname']." "."</font></td>";
 							  echo "<td><div class='switch'>
 										    <label >
-										      <span id='".$row['uid']."A'>Absent</span>
-										      <input type='checkbox' id ='".$row['uid']."C' checked onclick='color(".$row['uid'].")'>
-										      <span class='lever green' id ='".$row['uid']."S'></span>
-										      <span id='".$row['uid']."P' style='color:green'>Present</span>
+										      <span id='".$row['rollnum']."A'>Absent</span>
+										      <input type='checkbox' id ='".$row['rollnum']."C' checked onclick='color(\"".$row['rollnum']."\")'>
+										      <span class='lever green' id ='".$row['rollnum']."S'></span>
+										      <span id='".$row['rollnum']."P' style='color:green'>Present</span>
 										    </label>
 										</div></td>";
 							  echo "</tr>";
@@ -122,10 +122,16 @@ $grad_year = $field_array['grad_year'];
 
 </main>
  <script type="text/javascript">$( document ).ready(function(){ $(".button-collapse").sideNav();})</script>
- <script type="text/javascript">function color(uid)
+ <script type="text/javascript">
+ function c()
+ {
+ alert(1);
+ }
+ function color(uid)
  									{
+											//alert("hi");
  											x=document.getElementById(uid+"C");
- 											//alert("hi"+uid);
+ 											
  											if(x.checked==false)
  											{
  											document.getElementById(uid+"A").style.color="red";
