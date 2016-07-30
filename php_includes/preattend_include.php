@@ -11,7 +11,11 @@ $class_date = str_replace("-", "", $class_date);
 $lecture_id = $batch.$section.$course.$class_date;
 $tname  = $batch."_".$section;
 $query = "alter table ".$tname." add ".$lecture_id." int(2);";
-echo $query;
+//echo $query;
 $query_result = $conn->prepare($query);
 $query_result->execute();
+
+$_SESSION['lecture_id'] = $lecture_id;
+header("Location: ../attendance.php");
+
 ?>
