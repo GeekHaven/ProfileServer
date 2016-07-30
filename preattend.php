@@ -43,49 +43,30 @@ include 'php_includes/login_auth.php';
 <main>
 <div  class="container">
 <div class="row">
-	<form class="col s9">
+	<form class="col s9" action="php_includes/preattend_include.php" method="POST">
       <label>Batch</label>
       
-		<select class="browser-default">
+		<select name = "batch" class="browser-default">
 		  <option value="b2k15">b2k15</option>
 		  <option value="b2k16">b2k16</option>
 		</select>
 		<label>Section:</label>
-		<select class="browser-default">
+		<select name = "section" class="browser-default">
 		  <option value="A">A</option>
 		  <option value="B">B</option>
 		</select>
 		<label>Course:</label>
-		<select class="browser-default">
+		<select name = "course" class="browser-default">
 		  <option value="IDST">IDST</option>
 		  <option value="IDAA">IDAA</option>
 		</select>    
-		<input type="date" class="datepicker">
-		<input type = submit>
-            
+		<input name = "class_date" type="date" class="datepicker">
+		<input type = submit>    
     </form>
 	
 </div>
 </div>
 </header>
-
-	
-
-		<script >
-	    
-	    	function loadDoc(batchid) 
-	    	{
-  				var xhttp = new XMLHttpRequest();
-  				xhttp.onreadystatechange=function() 
-  				{
-    			if (xhttp.readyState == 4 && xhttp.status == 200) {
-      			document.getElementById("demo").innerHTML = xhttp.responseText;
-    			}
-  			};
-  			xhttp.open("GET", "demo_get.asp?t=" + Math.random(), true);
-  			xhttp.send();
-	    </script>
-
 </main>
  <script type="text/javascript">$( document ).ready(function(){ $(".button-collapse").sideNav();})</script>
  
