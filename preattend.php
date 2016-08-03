@@ -1,7 +1,4 @@
 <?php
-session_start();
-include 'php_includes/dbconnect.php';
-include 'php_includes/login_auth.php'; 
 ?>
 
 
@@ -14,61 +11,78 @@ include 'php_includes/login_auth.php';
 	
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
+
+ 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="css/temp_login.css">
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/user.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
-<header>
-<nav class="top-nav #e0e0e0 grey lighten-2">
-        <div class="container">
-          <div class="nav-wrapper"><a class="page-title">Temporary navbar</a></div>
-        </div>
-      </nav>
-<a href="logout" style="float :right">logout</a>
-
-<div class="container">
-	<a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
-	<i class="material-icons">menu</i></a>
-</div>
-<div class="container">
-<ul id="nav-mobile" class="side-nav fixed #424242 grey darken-3">
-      <li><a href="#!">First Sidebar Link</a></li>
-      <li><a href="#!">Second Sidebar Link</a></li>
-    </ul>
-    <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+	<div>
+		<nav>
+		    <div id="nav-wrapper">
+		      <a href="#" class="brand-logo" id="header-logo">
+		        <img src="images/iiita_logo.gif">
+		      </a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		      	<!-- <img src="minion.jpg" id="profile-picture-small"> -->
+		        <li class="active"><a href="#" id="header-user">Minion</a></li>
+		        <li><a href="#" id="header-login">Login</a></li>
+		        <li><a href="#" id="header-signup">Sign Up</a></li>
+		        <li><a href="logout" style="float :right">logout</a></li>
+		      </ul>
+		    </div>
+		</nav>
+		<div  class="container">
+			<div class="row">
+				<div class="col s12 m4 l8 offset-l2">
+					<div class="formcontainer">
+						<h3 id="formTitle">Selection Form</h3>
+						<form class="col s12" action="php_includes/preattend_include.php" method="POST">
+					      <div class="row">
+					        <div class="input-field col s6">
+					        	<label>Batch:</label>
+					            <br><br>
+					          <select name = "batch" class="browser-default">
+							  	<option value="b2k15">b2k15</option>
+							  	<option value="b2k16">b2k16</option>
+							  </select>
+					        </div>
+					        <div class="input-field col s6">
+					        	<label>Section:</label>
+					            <br><br>
+					            <select name = "section" class="browser-default">
+								  <option value="A">A</option>
+								  <option value="B">B</option>
+								</select>
+					        </div> 
+					        <div class="input-field col s12">
+					            <label>Course:</label>
+					            <br><br>
+								<select name = "course" class="browser-default">
+								  <option value="IDST">IDST</option>
+								  <option value="IDAA">IDAA</option>
+								</select>
+					        </div>
+					        <div class="input-field col s12">
+					            <label>Date:</label>
+					            <br><br>
+								<input name = "class_date" type="date" class="datepicker">
+					        </div>
+					      </div>  
+						  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+						    <i class="material-icons right">send</i>
+						  </button>
+					    </form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</header>	
-<main>
-<div  class="container">
-<div class="row">
-	<form class="col s9" action="php_includes/preattend_include.php" method="POST">
-      <label>Batch</label>
-      
-		<select name = "batch" class="browser-default">
-		  <option value="b2k15">b2k15</option>
-		  <option value="b2k16">b2k16</option>
-		</select>
-		<label>Section:</label>
-		<select name = "section" class="browser-default">
-		  <option value="A">A</option>
-		  <option value="B">B</option>
-		</select>
-		<label>Course:</label>
-		<select name = "course" class="browser-default">
-		  <option value="IDST">IDST</option>
-		  <option value="IDAA">IDAA</option>
-		</select>    
-		<input name = "class_date" type="date" class="datepicker">
-		<input type = submit>    
-    </form>
-	
-</div>
-</div>
-</header>
-</main>
- <script type="text/javascript">$( document ).ready(function(){ $(".button-collapse").sideNav();})</script>
+<script type="text/javascript">$( document ).ready(function(){ $(".button-collapse").sideNav();})</script>
  
 </body>
 </html>
