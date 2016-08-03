@@ -341,6 +341,12 @@ nav ul a{
   margin: 20px;
 }
 
+#user-info3 #noinfo{
+  position: absolute;
+  width: 100%;
+  /*z-index: 0;*/
+}
+
 
 #user-info3 .hid{
   display: none;
