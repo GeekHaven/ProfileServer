@@ -15,6 +15,32 @@ nav ul a{
   opacity: .8;
 }
 
+/*For Responsiveness*/
+
+@media screen and (min-device-width: 900px) {
+  .user-profile #cover-profile #profile-picture{
+    bottom: -100px;
+    top:auto !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .half-left{
+    width: 100% !important;
+    float: none;
+  }
+  #education-image{
+    display: none;
+  }
+
+  #skill-about{
+    margin: 0px !important;
+    transition: margin .2s;
+  }
+
+}
+
+
 
 #user-profile-header{
   position: fixed;
@@ -61,6 +87,8 @@ nav ul a{
   margin: 0px;
   width: 100%;
   height: 100%;
+  max-height: 420px;
+
 }
 
 .user-profile #cover-profile #cover-photo {
@@ -82,13 +110,14 @@ nav ul a{
   position: absolute;
   left: -3vw;
   z-index: 100;
-  min-width: 150px;
-  min-height: 150px;
+  width: 180px;
+  height: 180px;
   /*margin-left: 27vw;*/
   /*margin-right: 27vw;*/
-  height: 16vw;
-  width: 16vw;
-  bottom: -100px;
+  /*height: 16vw;
+  width: 16vw;*/
+  top:360px;
+  /*bottom: -100px;*/
 
 
 }
@@ -254,10 +283,12 @@ nav ul a{
 #user-info3 tr:nth-child(even) {background-color: #f2f2f2}
 
 #user-info3 #skill-about {
-  margin-right: 15%;
-  margin-left: 15%;
+  margin-right: 5%;
+  margin-left: 5%;
   height: 100%;
-  overflow-y:;
+  overflow-y: auto;
+  transition: margin .2s;
+
 
 }
 
@@ -298,7 +329,7 @@ nav ul a{
 }
 
 #user-info3 #project-about {
-  height: 100%
+  height: 100%;
   overflow-y: auto;
 }
 
