@@ -127,6 +127,9 @@ if($user_count == 0){
 <html>
 <head>
 	<title>Edit Profile Details</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="css/form.css" rel="stylesheet" type="text/css">
+
 	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
 	<script type="text/javascript" src="js/update_profile.js"></script>
 	<script type="text/javascript" src="js/update_project.js"></script>
@@ -137,65 +140,66 @@ if($user_count == 0){
 <body>
 	<a href="logout" style="float :right">logout</a>
 	<h4> NOTE : double-click to edit , press enter to update</h4>
-	First Name 
-	<input type = "text"  id ="first_name" value ="<?php echo nohtml($first_name); ?>" readonly ></input><br><br>
+	<div class="form-group">
+	<label for="first_name">First Name</label>
+	<input type = "text"  class="form-control" id ="first_name" value ="<?php echo nohtml($first_name); ?>" readonly ></input><br><br>
 	Middle Name 
-	<input type = "text"  id ="middle_name" value ="<?php echo nohtml($middle_name); ?>" readonly></input><br><br>
+	<input type = "text" class="form-control" id ="middle_name" value ="<?php echo nohtml($middle_name); ?>" readonly></input><br><br>
 	Last Name  
-	<input type = "text"  id ="last_name"  value ="<?php echo nohtml($last_name); ?>" readonly></input><br><br>
+	<input type = "text" class="form-control"   id ="last_name"  value ="<?php echo nohtml($last_name); ?>" readonly></input><br><br>
 	Email 
-	<input type="email" id="email" value="<?php echo nohtml($email); ?>" readonly></input><br><br>
+	<input type="email" class="form-control"  id="email" value="<?php echo nohtml($email); ?>" readonly></input><br><br>
 	Date Of Birth  
-	<input type = "date" id ="date_of_birth" value ="<?php echo nohtml($date_of_birth); ?>" readonly></input><br><br>
+	<input type = "date" class="form-control"  id ="date_of_birth" value ="<?php echo nohtml($date_of_birth); ?>" readonly></input><br><br>
 	Year Of Graduation
-	<input type = "radio" name="grad_year" id="grad_year" value="2019" <?php echo ($grad_year=='2019')?'checked':'' ?> >2019</input>
-	<input type = "radio" name="grad_year" id="grad_year" value="2020" <?php echo ($grad_year=='2020')?'checked':'' ?> >2020</input>
-	<input type = "radio" name="grad_year" id="grad_year" value="2021" <?php echo ($grad_year=='2021')?'checked':'' ?> >2021</input>
-	<input type = "radio" name="grad_year" id="grad_year" value="2022" <?php echo ($grad_year=='2022')?'checked':'' ?> >2022</input><br><br>
+	<input type = "radio" class="form-control"  name="grad_year" id="grad_year" value="2019" <?php echo ($grad_year=='2019')?'checked':'' ?> >2019</input>
+	<input type = "radio" class="form-control"  name="grad_year" id="grad_year" value="2020" <?php echo ($grad_year=='2020')?'checked':'' ?> >2020</input>
+	<input type = "radio" class="form-control"  name="grad_year" id="grad_year" value="2021" <?php echo ($grad_year=='2021')?'checked':'' ?> >2021</input>
+	<input type = "radio" class="form-control"  name="grad_year" id="grad_year" value="2022" <?php echo ($grad_year=='2022')?'checked':'' ?> >2022</input><br><br>
 	Batch 
-	<input type = "number"  id ="batch"  value ="<?php echo nohtml($batch); ?>" size="4" readonly></input><br><br>
+	<input type = "number" class="form-control"   id ="batch"  value ="<?php echo nohtml($batch); ?>" size="4" readonly></input><br><br>
 	Course Degree
-	<input type = "radio" name="course_degree" id="course_degree" value="B.tech" <?php echo ($course_degree=='B.tech')?'checked':'' ?> >B.Tech</input>
-	<input type = "radio" name="course_degree" id="course_degree" value="M.tech" <?php echo ($course_degree=='M.tech')?'checked':'' ?> >M.Tech</input><br><br>
+	<input type = "radio" class="form-control"  name="course_degree" id="course_degree" value="B.tech" <?php echo ($course_degree=='B.tech')?'checked':'' ?> >B.Tech</input>
+	<input type = "radio" class="form-control"  name="course_degree" id="course_degree" value="M.tech" <?php echo ($course_degree=='M.tech')?'checked':'' ?> >M.Tech</input><br><br>
 	Course Specialization
-	<input type = "text"  id ="course_area"  value ="<?php echo nohtml($course_area); ?>" readonly></input><br><br>
+	<input type = "text" class="form-control"   id ="course_area"  value ="<?php echo nohtml($course_area); ?>" readonly></input><br><br>
 	About You
-	<input type = "text"  id ="about"  value ="<?php echo nohtml($about); ?>" readonly></input><br><br>
+	<input type = "text" class="form-control"   id ="about"  value ="<?php echo nohtml($about); ?>" readonly></input><br><br>
 	Contact No.
-	<input type = "number"  id ="contact_no"  value ="<?php echo nohtml($contact_no); ?>" maxLength="10"readonly></input><br><br>
+	<input type = "number" class="form-control"   id ="contact_no"  value ="<?php echo nohtml($contact_no); ?>" maxLength="10"readonly></input><br><br>
 	
 	<!-- project section starts -->
 	<?php 
 		if($project_q_result->execute()){
 			if($project_q_result->rowCount()){
 				while($row = $project_q_result->fetch(PDO::FETCH_ASSOC)){	
-					echo '<label id ="p_title_label_'.nohtml($row['project_id']).'">Project Title &nbsp&nbsp</label>';
-					echo '<input type = "text"  id ="p_title_'.nohtml($row['project_id']).'" value ="'.nohtml($row['project_title']).'" readonly></input>&nbsp&nbsp';
-					echo '<label id ="p_about_label_'.nohtml($row['project_id']).'">About Project&nbsp&nbsp</label>';
-					echo '<input type = "text"  id ="p_about_'.nohtml($row['project_id']).'" value ="'.nohtml($row['project_about']).'" readonly></input>&nbsp&nbsp';
-					echo '<button id ="p_delete_'.nohtml($row['project_id']).'" onclick = "delete_project(\''.nohtml($row['project_id']).'\');">delete</button><br><br>';
+					echo '<label class="form-control" id ="p_title_label_'.nohtml($row['project_id']).'">Project Title &nbsp&nbsp</label>';
+					echo '<input type = "text" class="form-control"   id ="p_title_'.nohtml($row['project_id']).'" value ="'.nohtml($row['project_title']).'" readonly></input>&nbsp&nbsp';
+					echo '<label class="form-control" id ="p_about_label_'.nohtml($row['project_id']).'">About Project&nbsp&nbsp</label>';
+					echo '<input type = "text" class="form-control"   id ="p_about_'.nohtml($row['project_id']).'" value ="'.nohtml($row['project_about']).'" readonly></input>&nbsp&nbsp';
+					echo '<button class="btn btn-primary" id ="p_delete_'.nohtml($row['project_id']).'" onclick = "delete_project(\''.nohtml($row['project_id']).'\');">delete</button><br><br>';
 				}
 			}
 		}
 	?>
 	<label id = "p_title_label_add">Project Title&nbsp&nbsp</label>
-	<input type = "text" id = "p_title_add" ></input>
+	<input type = "text" class="form-control"  id = "p_title_add" ></input>
 	<label id = "p_about_label_add">About Project&nbsp&nbsp</label>
-	<input type = "text" id = "p_about_add" ></input>
-	<button id = "p_add" onclick="add_project()">add</button><br><br>
+	<input type = "text" class="form-control"  id = "p_about_add" ></input>
+	<button  class="btn btn-primary" id = "p_add" onclick="add_project()">add</button><br><br>
 	<!-- project section ends -->
 
 	Profile picture
 	<form method="POST" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
-    <input type="file" name="dp"/>
-    <input type="submit" value="upload"/>
+    <input type="file" class="form-control"  name="dp"/>
+    <input type="submit" class="form-control"  value="upload"/>
     </form>
 	Cover Photo
 	<form method="POST" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
-    <input type="file" name="cover"/>
-    <input type="submit" value="upload"/>
+    <input type="file" class="form-control"  name="cover"/>
+    <input type="submit" class="form-control"  value="upload"/>
     </form>
 
     <!-- skill section starts -->
@@ -203,40 +207,41 @@ if($user_count == 0){
 		if($skill_q_result->execute()){
 			if($skill_q_result->rowCount()){
 				while($row = $skill_q_result->fetch(PDO::FETCH_ASSOC)){	
-					echo '<label id ="s_title_label_'.nohtml($row['skill_id']).'">Skill Title &nbsp&nbsp</label>';
-					echo '<input type = "text"  id ="s_title_'.nohtml($row['skill_id']).'" value ="'.nohtml($row['skill_title']).'" readonly></input>&nbsp&nbsp';
-					echo '<label id ="s_points_label_'.nohtml($row['skill_id']).'">Skill Points(Out of 5)&nbsp&nbsp</label>';
-					echo '<input type = "number" min="0" max="5" id ="s_points_'.nohtml($row['skill_id']).'" value ="'.nohtml($row['skill_points']).'" readonly></input>&nbsp&nbsp';
-					echo '<button id ="s_delete_'.nohtml($row['skill_id']).'" onclick = "delete_skill(\''.nohtml($row['skill_id']).'\');">delete</button><br><br>';
+					echo '<label class="form-control" id ="s_title_label_'.nohtml($row['skill_id']).'">Skill Title &nbsp&nbsp</label>';
+					echo '<input type = "text" class="form-control" id ="s_title_'.nohtml($row['skill_id']).'" value ="'.nohtml($row['skill_title']).'" readonly></input>&nbsp&nbsp';
+					echo '<label class="form-control" id ="s_points_label_'.nohtml($row['skill_id']).'">Skill Points(Out of 5)&nbsp&nbsp</label>';
+					echo '<input type = "number" class="form-control" min="0" max="5" id ="s_points_'.nohtml($row['skill_id']).'" value ="'.nohtml($row['skill_points']).'" readonly></input>&nbsp&nbsp';
+					echo '<button class="btn btn-primary" id ="s_delete_'.nohtml($row['skill_id']).'" onclick = "delete_skill(\''.nohtml($row['skill_id']).'\');">delete</button><br><br>';
 				}
 			}
 		}
 	?>
 	<label id = "s_title_label_add">Skill Title&nbsp&nbsp</label>
-	<input type = "text" id = "s_title_add" ></input>
+	<input type = "text" class="form-control"  id = "s_title_add" ></input>
 	<label id = "s_points_label_add">Skill Points(Out of 5)&nbsp&nbsp</label>
-	<input type = "number" min="0" max="5" id = "s_points_add" ></input>
-	<button id = "s_add" onclick="add_skill()">add</button><br><br>
+	<input type = "number" class="form-control"  min="0" max="5" id = "s_points_add" ></input>
+	<button  class="btn btn-primary" id = "s_add" onclick="add_skill()">add</button><br><br>
 	<!-- skill section ends -->
 
 	Facebook profile link
-	<input type = "url"  id ="fb_link"  value ="<?php echo nohtml($fb_link); ?>" readonly></input><br><br>
+	<input type = "url" class="form-control"   id ="fb_link"  value ="<?php echo nohtml($fb_link); ?>" readonly></input><br><br>
 	Google Plus profile link
-	<input type = "url"  id ="gp_link"  value ="<?php echo nohtml($gp_link); ?>" readonly></input><br><br>
+	<input type = "url" class="form-control"  class="form-control"   id ="gp_link"  value ="<?php echo nohtml($gp_link); ?>" readonly></input><br><br>
 	LinkedIn profile link
-	<input type = "url"  id ="li_link"  value ="<?php echo nohtml($li_link); ?>" readonly></input><br><br>
+	<input type = "url" class="form-control"   id ="li_link"  value ="<?php echo nohtml($li_link); ?>" readonly></input><br><br>
 	Github profile Link
-	<input type = "url"  id ="gh_link"  value ="<?php echo nohtml($gh_link); ?>" readonly></input><br><br>
+	<input type = "url" class="form-control"   id ="gh_link"  value ="<?php echo nohtml($gh_link); ?>" readonly></input><br><br>
 	Website Link 1
-	<input type = "url"  id ="custom_link_1"  value ="<?php echo nohtml($custom_link_1); ?>" readonly></input><br><br>
+	<input type = "url" class="form-control"   id ="custom_link_1"  value ="<?php echo nohtml($custom_link_1); ?>" readonly></input><br><br>
 	Website Link 2
 	<input type = "url"  id ="custom_link_2"  value ="<?php echo nohtml($custom_link_2); ?>" readonly></input><br><br>
 	<form method="post" enctype="multipart/form-data">
 	    Select pdf to upload:
 	    <input type="file" name="resume" id="resume">
-	    <input type="submit" value="upload" name="submit">
+	    <input type="submit" class="form-control"  value="upload" name="submit">
 	</form>
-	<button onclick="delete_resume()">delete existing resume</button>
+	<button class="btn btn-primary" onclick="delete_resume()">delete existing resume</button>
+	</div>
 	
 	<h3 id="alert"></h3>
 
@@ -246,8 +251,8 @@ if($user_count == 0){
 		if($project_q_result->execute()){
 			if($project_q_result->rowCount()){
 				while($row = $project_q_result->fetch(PDO::FETCH_ASSOC)){	
-					echo '$("#p_title_'.nohtml($row['project_id']).'").dblclick(function(){$(this).removeAttr("readonly");$(this).css({"background-color":"red" , "color" : "white"});});';
-					echo '$("#p_about_'.nohtml($row['project_id']).'").dblclick(function(){$(this).removeAttr("readonly");$(this).css({"background-color":"red" , "color" : "white"});});';
+					echo '$("#p_title_'.nohtml($row['project_id']).'").dblclick(function(){$(this).removeAttr("readonly");});';
+					echo '$("#p_about_'.nohtml($row['project_id']).'").dblclick(function(){$(this).removeAttr("readonly");});';
 					echo '$("#p_title_'.nohtml($row['project_id']).'").bind("keyup", function(e) {if( e.keyCode === 13 ){ $(this).attr("readonly","readonly");update_project("p_title_'.nohtml($row['project_id']).'");$(this).css({"background-color":"white" , "color" : "black"});}});';
 					echo '$("#p_about_'.nohtml($row['project_id']).'").bind("keyup", function(e) {if( e.keyCode === 13 ){ $(this).attr("readonly","readonly");update_project("p_about_'.nohtml($row['project_id']).'");$(this).css({"background-color":"white" , "color" : "black"});}});';
 				}
@@ -258,8 +263,8 @@ if($user_count == 0){
 		if($skill_q_result->execute()){
 			if($skill_q_result->rowCount()){
 				while($row = $skill_q_result->fetch(PDO::FETCH_ASSOC)){	
-					echo '$("#s_title_'.nohtml($row['skill_id']).'").dblclick(function(){$(this).removeAttr("readonly");$(this).css({"background-color":"red" , "color" : "white"});});';
-					echo '$("#s_points_'.nohtml($row['skill_id']).'").dblclick(function(){$(this).removeAttr("readonly");$(this).css({"background-color":"red" , "color" : "white"});});';
+					echo '$("#s_title_'.nohtml($row['skill_id']).'").dblclick(function(){$(this).removeAttr("readonly");});';
+					echo '$("#s_points_'.nohtml($row['skill_id']).'").dblclick(function(){$(this).removeAttr("readonly");});';
 					echo '$("#s_title_'.nohtml($row['skill_id']).'").bind("keyup", function(e) {if( e.keyCode === 13 ){ $(this).attr("readonly","readonly");update_skill("s_title_'.nohtml($row['skill_id']).'");$(this).css({"background-color":"white" , "color" : "black"});}});';
 					echo '$("#s_points_'.nohtml($row['skill_id']).'").bind("keyup", function(e) {if( e.keyCode === 13 ){ if($(this).val() == ""){ alert("please enter a number");} else if( $(this).val() >=0 && $(this).val() < 6 ) {$(this).attr("readonly","readonly");update_skill("s_points_'.nohtml($row['skill_id']).'");$(this).css({"background-color":"white" , "color" : "black"});} else {alert("please enter a valid input")}}});';
 				}
