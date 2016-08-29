@@ -194,7 +194,7 @@ if($user_count == 0){
 	<input type = "text" class="form-control"   id ="course_area"  value ="<?php echo nohtml($course_area); ?>" readonly></input><br><br>
 	
 	<label for="about">About You</label>
-	<input type = "text" class="form-control"   id ="about"  value ="<?php echo nohtml($about); ?>" readonly></input><br><br>
+	<textarea type = "text" class="form-control"  rows="6"  id ="about" readonly><?php echo nohtml($about); ?></textarea><br><br>
 	
 	<label for="contact_no">Contact No.</label>
 	<input type = "number" class="form-control"   id ="contact_no"  value ="<?php echo nohtml($contact_no); ?>" maxLength="10"readonly></input><br><br>
@@ -207,7 +207,7 @@ if($user_count == 0){
 					echo '<label for="p_title_'.nohtml($row['project_id']).'" id ="p_title_label_'.nohtml($row['project_id']).'">Project Title &nbsp&nbsp</label>';
 					echo '<input type = "text" class="form-control"   id ="p_title_'.nohtml($row['project_id']).'" value ="'.nohtml($row['project_title']).'" readonly></input>&nbsp&nbsp';
 					echo '<label for="p_about_'.nohtml($row['project_id']).'" id ="p_about_label_'.nohtml($row['project_id']).'">About Project&nbsp&nbsp</label>';
-					echo '<input type = "text" class="form-control"   id ="p_about_'.nohtml($row['project_id']).'" value ="'.nohtml($row['project_about']).'" readonly></input>&nbsp&nbsp';
+					echo '<textarea type = "text" rows = "6" class="form-control"   id ="p_about_'.nohtml($row['project_id']).'" readonly>'.nohtml($row['project_about']).'</textarea>&nbsp&nbsp';
 					echo '<button class="btn btn-primary" id ="p_delete_'.nohtml($row['project_id']).'" onclick = "delete_project(\''.nohtml($row['project_id']).'\');">delete</button><br><br>';
 				}
 			}
@@ -216,7 +216,7 @@ if($user_count == 0){
 	<label id = "p_title_label_add">Project Title&nbsp&nbsp</label>
 	<input type = "text" class="form-control"  id = "p_title_add" ></input>
 	<label id = "p_about_label_add">About Project&nbsp&nbsp</label>
-	<input type = "text" class="form-control"  id = "p_about_add" ></input>
+	<textarea type = "text" rows="6" class="form-control"  id = "p_about_add" ></textarea>
 	<button  class="btn btn-primary" id = "p_add" onclick="add_project()">add</button><br><br>
 	<!-- project section ends -->
 
