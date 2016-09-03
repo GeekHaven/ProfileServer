@@ -38,11 +38,14 @@
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-	<div class="container">
+	<div class="container formgrid">
+		<br><br>
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-				<h3>Edit User Details</h3>
-				<div class="form-group">
+				<h2 class="formtitle">Edit User Details </h2>
+				<small class="formhelp">Double Tap to Edit and Enter to confirm</small>
+
+				<div class="form-group form">
 	
 					<label for="first_name">First Name</label>
 					<input type = "text"  class="form-control" id ="first_name" value ="< echo nohtml($first_name); ?>" readonly ></input><br><br>
@@ -185,12 +188,13 @@
 					    </label>
 					    <input type="submit" class="btn btn-info" value="upload" name="submit">
 					</form>
-					<button class="btn btn-danger" onclick="delete_resume()">delete existing resume</button>
+					<button class="btn btn-danger" onclick="delete_resume()">Delete existing resume</button>
 				</div>
 				
 				<h3 id="alert"></h3>
 			</div>
 		</div>
+		<br><br>
 	</div>
 	
 
