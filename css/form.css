@@ -1,6 +1,10 @@
-html{
-	padding : 4.5vmin;
+.formgrid{
+	background-color: #e7e7e7;
 }
-.form-control{
-	width: 30%;
+.formtitle{
+	color: teal;
+}
+.formhelp{
+	color: #2196f3;
+	float: right;
 }
